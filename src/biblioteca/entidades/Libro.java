@@ -11,7 +11,7 @@ package biblioteca.entidades;
 public class Libro {
     private int isbn;
     private String titulo;
-    private Autor autor;
+    private String autor;
     private int anio;
     private String tipo;
     private String editorial;
@@ -20,7 +20,7 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, boolean estado) {
+    public Libro(int isbn, String titulo, String autor, int anio, String tipo, String editorial, boolean estado) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -30,7 +30,7 @@ public class Libro {
         this.estado = estado;
     }
 
-    public Libro(String titulo, Autor autor, int anio, String tipo, String editorial, boolean estado) {
+    public Libro(String titulo, String autor, int anio, String tipo, String editorial, boolean estado) {
         this.titulo = titulo;
         this.autor = autor;
         this.anio = anio;
@@ -55,11 +55,11 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public Autor getAutor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setAutor(Autor autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
@@ -99,6 +99,4 @@ public class Libro {
     public String toString() {
         return titulo + " - " + autor + ", " + editorial;
     }
-    
-    
 }
