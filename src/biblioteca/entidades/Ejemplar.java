@@ -12,19 +12,19 @@ public class Ejemplar {
     private int codigo;
     private int cantidad;
     private Libro libro;
-    private boolean estado;
+    private EstadoEjemplar estado;
 
     public Ejemplar() {
     }
 
-    public Ejemplar(int codigo, int cantidad, Libro libro, boolean estado) {
+    public Ejemplar(int codigo, int cantidad, Libro libro, EstadoEjemplar estado) {
         this.codigo = codigo;
         this.cantidad = cantidad;
         this.libro = libro;
         this.estado = estado;
     }
 
-    public Ejemplar(int cantidad, Libro libro, boolean estado) {
+    public Ejemplar(int cantidad, Libro libro, EstadoEjemplar estado) {
         this.cantidad = cantidad;
         this.libro = libro;
         this.estado = estado;
@@ -54,11 +54,11 @@ public class Ejemplar {
         this.libro = libro;
     }
 
-    public boolean isEstado() {
+    public EstadoEjemplar getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(EstadoEjemplar estado) {
         this.estado = estado;
     }
 
@@ -66,6 +66,4 @@ public class Ejemplar {
     public String toString() {
         return codigo + " - " + libro.getTitulo();
     }
-    
-    
 }
