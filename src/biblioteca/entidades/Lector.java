@@ -12,6 +12,7 @@ public class Lector {
     private int nroSocio;
     private int dni;
     private int telefono;
+    private String apellido;
     private String nombre;
     private String domicilio;
     private String mail;
@@ -20,19 +21,21 @@ public class Lector {
     public Lector() {
     }
 
-    public Lector(int nroSocio, int dni, int telefono, String nombre, String domicilio, String mail, boolean estado) {
+    public Lector(int nroSocio, int dni, int telefono, String apellido, String nombre, String domicilio, String mail, boolean estado) {
         this.nroSocio = nroSocio;
         this.dni = dni;
         this.telefono = telefono;
+        this.apellido=apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.mail = mail;
         this.estado = estado;
     }
 
-    public Lector(int dni, int telefono, String nombre, String domicilio, String mail, boolean estado) {
+    public Lector(int dni, int telefono, String apellido, String nombre, String domicilio, String mail, boolean estado) {
         this.dni = dni;
         this.telefono = telefono;
+        this.apellido=apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.mail = mail;
@@ -59,6 +62,15 @@ public class Lector {
         return telefono;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
@@ -97,6 +109,6 @@ public class Lector {
 
     @Override
     public String toString() {
-        return nroSocio + " - " + dni + ", " + nombre ;
+        return nroSocio + " - " + dni + ", " + apellido +", "+nombre ;
     }
 }
