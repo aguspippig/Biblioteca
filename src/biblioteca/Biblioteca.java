@@ -6,6 +6,7 @@ package biblioteca;
 
 import biblioteca.accesoADatos.LibroData;
 import biblioteca.entidades.Libro;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Biblioteca {
     public static void main(String[] args) {
         // TODO code application logic here
         LibroData ld = new LibroData();
-        Libro libro = new Libro(123456789,"Libro de prueba","Grupo 44",2023,"Programacion","Argetina Programa",true);
+        //Libro libro = new Libro(123456789,"Libro de prueba","Grupo 44",2023,"Programacion","Argetina Programa",true);
         
         //ld.agregarLibro(libro);
         
@@ -27,7 +28,18 @@ public class Biblioteca {
         
         //ld.modificarLibro(libro);
         
-        ld.eliminarLibro(libro);
+        //ld.eliminarLibro(libro);
+        
+//        Libro libro = new Libro(876543219,"Los funerales de Mamá Grande","Gabriel García Marquéz",1977,"Novela","Editorial Planeta",true);
+//        ld.agregarLibro(libro);
+        
+        
+        ArrayList <Libro> listaAutor= new ArrayList<>(); 
+        listaAutor=ld.buscarLibroxAutor("Gabriel García Marquéz");
+        
+        for (Libro libro : listaAutor) {
+            System.out.println(libro.getIsbn()+" -"+libro);
+        }
     }
     
 }
