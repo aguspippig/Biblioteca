@@ -5,14 +5,8 @@
  */
 package biblioteca.accesoADatos;
 
-import biblioteca.entidades.Ejemplar;
-import biblioteca.entidades.Lector;
 import biblioteca.entidades.Prestamo;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,16 +14,17 @@ import javax.swing.JOptionPane;
  * @author Florencia
  */
 public class PrestamoData {
+
     private Connection con = null;
-    
+
     public PrestamoData() {
         con = Conexion.conectar();
     }
-    
-    public void prestarLibro(Prestamo prestamo){
-        String sql="INSERT INTO prestamo (lector, ejemplar, fechaPrestamo, fechaDevoluc, estado) VALUES(?, ?, ?, ?, ?)";
-        
-        if(prestamo.getEjemplar().getCantidad()>0){
+
+    public void prestarLibro(Prestamo prestamo) {
+        String sql = "INSERT INTO prestamo (lector, ejemplar, fechaPrestamo, fechaDevoluc, estado) VALUES(?, ?, ?, ?, ?)";
+
+        if (prestamo.getEjemplar().getCantidad() > 0) {
             try {
                 PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -47,16 +42,14 @@ public class PrestamoData {
                     prestamo.setIdPrestamo(rs.getInt(1));
                     JOptionPane.showMessageDialog(null, "Prestamo realizado correctamente.");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error");
+                    JOptionPane.showMessageDialog(null, "Error!");
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo. " + ex.getMessage());
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No hay ejemplares disponibles para el prestamo");
         }
+    }
 
-    }//fin metodo
-    
-    
 }

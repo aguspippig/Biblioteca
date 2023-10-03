@@ -5,14 +5,8 @@
 package biblioteca.accesoADatos;
 
 import biblioteca.entidades.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +16,7 @@ import javax.swing.JOptionPane;
 public class LibroData {
 
     private Connection con = null;
-    
+
     public LibroData() {
         con = Conexion.conectar();
     }
@@ -79,8 +73,8 @@ public class LibroData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro. " + ex.getMessage());
         }
     }
-    
-    public void eliminarLibro(Libro libro){
+
+    public void eliminarLibro(Libro libro) {
         try {
             String sql = "UPDATE libro SET estado = 0 WHERE isbn = ?";
 
@@ -100,20 +94,20 @@ public class LibroData {
         }
     }
 
-    public ArrayList <Libro> buscarLibroxAutor(String autor){
-        ArrayList <Libro> listaAutor= new ArrayList<>(); 
-        
-        String sql="SELECT * FROM libro WHERE autor=?";
-        
+    public ArrayList<Libro> buscarLibroxAutor(String autor) {
+        ArrayList<Libro> listaAutor = new ArrayList<>();
+
+        String sql = "SELECT * FROM libro WHERE autor = ?";
+
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, autor);
-            
-            ResultSet rs=ps.executeQuery();
-            
+
+            ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
-                
-                Libro libro=new Libro();
+
+                Libro libro = new Libro();
                 libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
@@ -121,17 +115,16 @@ public class LibroData {
                 libro.setTipo(rs.getString("tipo"));
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(rs.getBoolean("estado"));
-                
+
                 listaAutor.add(libro);
             }
             ps.close();
-           
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro. " + ex.getMessage());
         }
-        
-         return listaAutor;
-    
-    }//fin metodo
-    
+
+        return listaAutor;
+
+    }
 }
