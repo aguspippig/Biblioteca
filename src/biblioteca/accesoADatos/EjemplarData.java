@@ -17,14 +17,14 @@ import javax.swing.JOptionPane;
  * @author Florencia
  */
 public class EjemplarData {
+
     private Connection con = null;
 
     public EjemplarData() {
         con = Conexion.conectar();
     }
     
-    //agregar ejemplar
-    public void agregarEjemplar(Ejemplar ejemplar){
+    public void agregarEjemplar(Ejemplar ejemplar) {
         String sql = "INSERT INTO ejemplar(libro, estado, cantidad) VALUES(?, ?, ?)";
 
         try {
@@ -33,7 +33,7 @@ public class EjemplarData {
             ps.setInt(1, ejemplar.getLibro().getIsbn());
             ps.setString(2, ejemplar.getEstado().name());
             ps.setInt(3, ejemplar.getCantidad());
-            
+
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -42,11 +42,10 @@ public class EjemplarData {
                 ejemplar.setCodigo(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Ejemplar añadido correctamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "Error");
+                JOptionPane.showMessageDialog(null, "Error!");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar." + ex.getMessage());
         }
-
     }
 }
