@@ -29,6 +29,7 @@ public class PrestamoData {
     public void prestarLibro(Prestamo prestamo){
         String sql="INSERT INTO prestamo (lector, ejemplar, fechaPrestamo, fechaDevoluc, estado) VALUES(?, ?, ?, ?, ?)";
         
+        
         if(prestamo.getEjemplar().getCantidad()>0){
             try {
                 PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -45,11 +46,14 @@ public class PrestamoData {
 
                 if (rs.next()) {
                     prestamo.setIdPrestamo(rs.getInt(1));
+                    
                     JOptionPane.showMessageDialog(null, "Prestamo realizado correctamente.");
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Error");
                 }
-            } catch (Exception ex) {
+                
+            } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo. " + ex.getMessage());
             }
         }else{
