@@ -56,9 +56,17 @@ public class Biblioteca {
         
         //ejD.agregarEjemplar(ejemplar);
         
-        Prestamo prestamo = new Prestamo(LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
+        Prestamo prestamo = new Prestamo(9,LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
 
-        pd.prestarLibro(prestamo);
+        //pd.prestarLibro(prestamo);
+        
+        //pd.devolverLibro(prestamo);
+        
+        ArrayList<Lector> lista = lectorD.listaDeAtrasos();
+        
+        for (Lector lector1 : lista) {
+            System.out.println(lector1);
+        }
     }
 
 }

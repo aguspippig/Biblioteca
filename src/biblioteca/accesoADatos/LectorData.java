@@ -7,6 +7,9 @@ package biblioteca.accesoADatos;
 
 import biblioteca.entidades.Lector;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,5 +51,36 @@ public class LectorData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
         }
+    }
+    
+    public ArrayList<Lector> listaDeAtrasos(){
+        ArrayList<Lector> lista = new ArrayList<>();
+        
+        try {
+            String sql = "SELECT nroSocio, apellido, nombre, domicilio, dni, telefono, mail, lector.estado FROM lector JOIN prestamo ON (lector.nroSocio = lector) WHERE TIMESTAMPDIFF (day,fechaPrestamo,fechaDevoluc) > 8";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Lector lector = new Lector();
+                
+                lector.setNroSocio(rs.getInt("nroSocio"));
+                lector.setApellido(rs.getString("apellido"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setDni(rs.getInt("dni"));
+                lector.setTelefono(rs.getInt("telefono"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(rs.getBoolean("estado"));
+                
+                lista.add(lector);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+        }
+        
+        return lista;
     }
 }
