@@ -28,17 +28,17 @@ public class Biblioteca {
 
         Libro libro = new Libro(123456789,"Libro de prueba","Grupo 44",2023,"Programacion","Argetina Programa",true);
         
-        ld.agregarLibro(libro);
+        //ld.agregarLibro(libro);
         
-        libro.setTipo("Informatica");
+        //libro.setTipo("Informatica");
         
-        ld.modificarLibro(libro);
+        //ld.modificarLibro(libro);
         
-        ld.eliminarLibro(libro);
+        //ld.eliminarLibro(libro);
         
         //Libro libro = new Libro(876543219, "Los funerales de Mamá Grande", "Gabriel García Marquéz", 1977, "Novela", "Editorial Planeta", true);
         
-        ld.agregarLibro(libro);
+        //ld.agregarLibro(libro);
         
         ArrayList <Libro> listaAutor= new ArrayList<>(); 
         
@@ -48,15 +48,15 @@ public class Biblioteca {
 //            System.out.println(libro.getIsbn()+" -"+libro);
 //        }
         
-        Lector lector = new Lector(765, 34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
+        Lector lector = new Lector(1,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
         
-        lectorD.agregarLector(lector);
+        //lectorD.agregarLector(lector);
 
-        Ejemplar ejemplar = new Ejemplar(0, 1, libro, EstadoEjemplar.DISPONIBLE);
+        Ejemplar ejemplar = new Ejemplar(4,10, libro, EstadoEjemplar.DISPONIBLE);
         
-        ejD.agregarEjemplar(ejemplar);
+        //ejD.agregarEjemplar(ejemplar);
         
-        Prestamo prestamo = new Prestamo(0, LocalDate.of(2023, Month.OCTOBER, 3), LocalDate.of(2023, Month.OCTOBER, 10), ejemplar, lector, true);
+        Prestamo prestamo = new Prestamo(LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
 
         pd.prestarLibro(prestamo);
     }
