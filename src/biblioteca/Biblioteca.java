@@ -27,7 +27,7 @@ public class Biblioteca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
         LibroData ld = new LibroData();
         PrestamoData pd= new PrestamoData();
         LectorData lectorD=new LectorData();
@@ -54,7 +54,7 @@ public class Biblioteca {
 //        }
         
         Lector lector=new Lector(765, 34657990, 35417654, "Lopex","Rita","Las Acacias 236","lopexrita666@gmail.com",true);
-//        lectorD.agregarLector(lector);
+////        lectorD.agregarLector(lector);
         
         Ejemplar ejemplar=new Ejemplar(0, 1, libro, EstadoEjemplar.DISPONIBLE);
 //        ejD.agregarEjemplar(ejemplar);
