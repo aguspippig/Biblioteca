@@ -50,6 +50,8 @@ public class Biblioteca {
         
         Lector lector = new Lector(1,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
         
+        Lector lector2 = new Lector(6,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
+        
         //lectorD.agregarLector(lector);
 
         Ejemplar ejemplar = new Ejemplar(3, libro, EstadoEjemplar.DISPONIBLE);
@@ -68,10 +70,10 @@ public class Biblioteca {
             System.out.println(lector1);
         }*/
         
-        ArrayList<Ejemplar> lista = pd.ejemplaresPrestadosXFecha(LocalDate.of(2023, Month.APRIL, 1));
+        ArrayList<Ejemplar> lista = ld.listarEjemplaresXLector(lector2);
         
         for (Ejemplar ejemplar1 : lista) {
-            System.out.println(ejemplar1);
+            System.out.println(lector2 + " | " + ejemplar1);
         }
     }
 
