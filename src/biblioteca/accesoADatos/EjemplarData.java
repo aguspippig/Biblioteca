@@ -23,7 +23,7 @@ public class EjemplarData {
     public EjemplarData() {
         con = Conexion.conectar();
     }
-    
+
     public void agregarEjemplar(Ejemplar ejemplar) {
         String sql = "INSERT INTO ejemplar(libro, estado) VALUES(?, ?)";
 

@@ -9,8 +9,6 @@ import biblioteca.entidades.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +25,7 @@ public class PrestamoData {
 
     public void prestarLibro(Prestamo prestamo) {
         String sql = "INSERT INTO prestamo (lector, ejemplar, fechaPrestamo, fechaDevoluc, estado) VALUES(?, ?, ?, ?, ?)";
-        
+
         String sql2 = "UPDATE ejemplar SET estado = 'PRESTADO' WHERE codigo = ?";
 
         if (verificarEjemplares(prestamo.getEjemplar())) {
@@ -64,11 +62,11 @@ public class PrestamoData {
     }
 
     public void devolverLibro(Prestamo prestamo) {
-        if(verificarPrestamo(prestamo)){
+        if (verificarPrestamo(prestamo)) {
             String sql = "UPDATE prestamo SET estado = false WHERE idPrestamo = ?";
-            
+
             String sql2 = "UPDATE ejemplar SET estado = 'DISPONIBLE' WHERE codigo = ?";
-            
+
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
 
@@ -89,29 +87,29 @@ public class PrestamoData {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo. " + ex.getMessage());
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No existe el prestamo.");
         }
     }
-    
-    public boolean verificarPrestamo(Prestamo prestamo){
+
+    public boolean verificarPrestamo(Prestamo prestamo) {
         try {
             String sql = "SELECT * FROM prestamo WHERE idPrestamo = ?";
-            
+
             PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setInt(1,prestamo.getIdPrestamo());
-            
+
+            ps.setInt(1, prestamo.getIdPrestamo());
+
             ResultSet rs = ps.executeQuery();
-            
-            if(rs.next() && rs.getBoolean("estado") == true){
+
+            if (rs.next() && rs.getBoolean("estado") == true) {
                 return true;
             }
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo. " + ex.getMessage());
         }
-        
+
         return false;
     }
 
@@ -135,37 +133,37 @@ public class PrestamoData {
 
         return false;
     }
-    
-    public ArrayList<Ejemplar> ejemplaresPrestadosXFecha(LocalDate fechaPrestamo){
+
+    public ArrayList<Ejemplar> ejemplaresPrestadosXFecha(LocalDate fechaPrestamo) {
         ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
-        
+
         try {
             String sql = "SELECT codigo, titulo, autor, isbn FROM libro JOIN ejemplar ON (isbn = libro) JOIN prestamo ON (codigo = ejemplar) WHERE fechaPrestamo = ? AND prestamo.estado = 1";
-            
+
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setDate(1, Date.valueOf(fechaPrestamo));
-            
+
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 Libro libro = new Libro();
                 Ejemplar ejemplar = new Ejemplar();
-                
+
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setIsbn(rs.getInt("isbn"));
-                
+
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(libro);
                 //ejemplar.setEstado(EstadoEjemplar.valueOf(rs.getString("estado")));
-                
+
                 listaEjemplares.add(ejemplar);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
         }
-        
+
         return listaEjemplares;
     }
 }

@@ -128,36 +128,36 @@ public class LibroData {
 
         return listaAutor;
     }
-    
-    public ArrayList<Ejemplar> listarEjemplaresXLector(Lector lector){
+
+    public ArrayList<Ejemplar> listarEjemplaresXLector(Lector lector) {
         ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
-        
+
         try {
             String sql = "SELECT codigo, titulo, autor, isbn FROM libro JOIN ejemplar ON (isbn = libro) JOIN prestamo ON (codigo = ejemplar) WHERE lector = ? AND prestamo.estado = 1";
-            
+
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setInt(1, lector.getNroSocio());
-            
+
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 Ejemplar ejemplar = new Ejemplar();
                 Libro libro = new Libro();
-                
+
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
                 libro.setIsbn(rs.getInt("isbn"));
-                
+
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(libro);
-                
+
                 listaEjemplares.add(ejemplar);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la ejemplar. " + ex.getMessage());
         }
-        
+
         return listaEjemplares;
     }
 }
