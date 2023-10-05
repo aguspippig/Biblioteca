@@ -8,8 +8,6 @@ package biblioteca.accesoADatos;
 import biblioteca.entidades.Lector;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**

@@ -42,7 +42,7 @@ public class Biblioteca {
         
         ArrayList <Libro> listaAutor= new ArrayList<>(); 
         
-        listaAutor=ld.buscarLibroxAutor("Gabriel García Marquéz");
+        listaAutor=ld.buscarLibroXAutor("Gabriel García Marquéz");
         
 //        for (Libro libro : listaAutor) {
 //            System.out.println(libro.getIsbn()+" -"+libro);
@@ -52,20 +52,26 @@ public class Biblioteca {
         
         //lectorD.agregarLector(lector);
 
-        Ejemplar ejemplar = new Ejemplar(4,10, libro, EstadoEjemplar.DISPONIBLE);
+        Ejemplar ejemplar = new Ejemplar(3, libro, EstadoEjemplar.DISPONIBLE);
         
         //ejD.agregarEjemplar(ejemplar);
         
-        Prestamo prestamo = new Prestamo(9,LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
+        Prestamo prestamo = new Prestamo(11,LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
 
         //pd.prestarLibro(prestamo);
         
         //pd.devolverLibro(prestamo);
         
-        ArrayList<Lector> lista = lectorD.listaDeAtrasos();
+        /*ArrayList<Lector> lista = lectorD.listaDeAtrasos();
         
         for (Lector lector1 : lista) {
             System.out.println(lector1);
+        }*/
+        
+        ArrayList<Ejemplar> lista = pd.ejemplaresPrestadosXFecha(LocalDate.of(2023, Month.APRIL, 1));
+        
+        for (Ejemplar ejemplar1 : lista) {
+            System.out.println(ejemplar1);
         }
     }
 

@@ -25,14 +25,13 @@ public class EjemplarData {
     }
     
     public void agregarEjemplar(Ejemplar ejemplar) {
-        String sql = "INSERT INTO ejemplar(libro, estado, cantidad) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO ejemplar(libro, estado) VALUES(?, ?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, ejemplar.getLibro().getIsbn());
             ps.setString(2, ejemplar.getEstado().name());
-            ps.setInt(3, ejemplar.getCantidad());
 
             ps.executeUpdate();
 
