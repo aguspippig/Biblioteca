@@ -10,22 +10,19 @@ package biblioteca.entidades;
  */
 public class Ejemplar {
     private int codigo;
-    private int cantidad;
     private Libro libro;
     private EstadoEjemplar estado;
 
     public Ejemplar() {
     }
 
-    public Ejemplar(int codigo, int cantidad, Libro libro, EstadoEjemplar estado) {
+    public Ejemplar(int codigo, Libro libro, EstadoEjemplar estado) {
         this.codigo = codigo;
-        this.cantidad = cantidad;
         this.libro = libro;
         this.estado = estado;
     }
 
-    public Ejemplar(int cantidad, Libro libro, EstadoEjemplar estado) {
-        this.cantidad = cantidad;
+    public Ejemplar(Libro libro, EstadoEjemplar estado) {
         this.libro = libro;
         this.estado = estado;
     }
@@ -36,14 +33,6 @@ public class Ejemplar {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
     }
 
     public Libro getLibro() {
@@ -64,6 +53,6 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return codigo + " - " + libro.getTitulo();
+        return codigo + " - " + libro.getIsbn() + ", "+ libro.getTitulo() + ", " + libro.getAutor();
     }
 }

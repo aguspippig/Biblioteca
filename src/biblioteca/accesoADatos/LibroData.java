@@ -94,7 +94,7 @@ public class LibroData {
         }
     }
 
-    public ArrayList<Libro> buscarLibroxAutor(String autor) {
+    public ArrayList<Libro> buscarLibroXAutor(String autor) {
         ArrayList<Libro> listaAutor = new ArrayList<>();
 
         String sql = "SELECT * FROM libro WHERE autor = ?";
@@ -125,6 +125,5 @@ public class LibroData {
         }
 
         return listaAutor;
-
     }
 }
