@@ -38,7 +38,7 @@ public class GestionPrestamos extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jDatePrestamo = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateDevolucion = new com.toedter.calendar.JDateChooser();
 
         setPreferredSize(new java.awt.Dimension(600, 500));
 
@@ -87,7 +87,7 @@ public class GestionPrestamos extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jDatePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDateDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 154, Short.MAX_VALUE)))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -114,7 +114,7 @@ public class GestionPrestamos extends javax.swing.JInternalFrame {
                     .addComponent(jDatePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
@@ -124,7 +124,7 @@ public class GestionPrestamos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateDevolucion;
     private com.toedter.calendar.JDateChooser jDatePrestamo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -58,7 +58,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jDatePrestamo" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Component id="jDateChooser2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="jDateDevolucion" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="154" max="32767" attributes="0"/>
                           </Group>
@@ -96,7 +96,7 @@
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDateDevolucion" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="121" max="32767" attributes="0"/>
@@ -171,7 +171,7 @@
         <Property name="text" type="java.lang.String" value="Fecha de devolucion:"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateDevolucion">
     </Component>
   </SubComponents>
 </Form>
