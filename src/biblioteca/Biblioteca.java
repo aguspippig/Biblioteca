@@ -70,10 +70,16 @@ public class Biblioteca {
             System.out.println(lector1);
         }*/
         
-        ArrayList<Ejemplar> lista = ld.listarEjemplaresXLector(lector2);
+        /*ArrayList<Ejemplar> lista = ejD.listarEjemplaresXLector(lector2);
         
         for (Ejemplar ejemplar1 : lista) {
             System.out.println(lector2 + " | " + ejemplar1);
+        }*/
+        
+        ArrayList<Ejemplar> lista2 = ejD.listarEjemplares();
+        
+        for (Ejemplar ejemplar2 : lista2) {
+            System.out.println(ejemplar2);
         }
     }
 

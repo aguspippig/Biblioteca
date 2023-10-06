@@ -108,8 +108,8 @@ public class LibroData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 Libro libro = new Libro();
+                
                 libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
@@ -127,5 +127,64 @@ public class LibroData {
         }
 
         return listaAutor;
+    }
+    
+    public Libro buscarLibroXIsbn(int isbn) {
+        Libro libro = new Libro();
+        
+        String sql = "SELECT * FROM libro WHERE isbn = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, isbn);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro. " + ex.getMessage());
+        }
+
+        return libro;
+    }
+    
+    public ArrayList<Libro> listarLibros() {
+        ArrayList<Libro> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM libro";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Libro libro = new Libro();
+
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(rs.getBoolean("estado"));
+
+                lista.add(libro);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro." + ex.getMessage());
+        }
+        
+        return lista;
     }
 }

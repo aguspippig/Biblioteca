@@ -4,6 +4,7 @@
  */
 package biblioteca.vistas;
 
+import biblioteca.accesoADatos.PrestamoData;
 import biblioteca.entidades.*;
 
 /**
@@ -11,6 +12,8 @@ import biblioteca.entidades.*;
  * @author agus_
  */
 public class GestionPrestamos extends javax.swing.JInternalFrame {
+    
+    private PrestamoData pd = new PrestamoData();
 
     /**
      * Creates new form GestionPrestamos

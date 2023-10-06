@@ -77,4 +77,31 @@ public class EjemplarData {
 
         return listaEjemplares;
     }
+    
+    public ArrayList<Ejemplar> listarEjemplares() {
+        ArrayList<Ejemplar> lista = new ArrayList<>();
+        LibroData ld = new LibroData();
+
+        try {
+            String sql = "SELECT * FROM ejemplar";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Ejemplar ejemplar = new Ejemplar();
+
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(ld.buscarLibroXIsbn(rs.getInt("libro")));
+                ejemplar.setEstado(EstadoEjemplar.valueOf(rs.getString("estado")));
+
+                lista.add(ejemplar);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+        }
+
+        return lista;
+    }
 }
