@@ -85,4 +85,11 @@ public class Prestamo {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return idPrestamo + " - " + lector.getApellido() + ", " + lector.getNombre() + fechaPrestamo + fechaDevoluc;
+    }
+    
+    
 }

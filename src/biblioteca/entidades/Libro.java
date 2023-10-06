@@ -97,6 +97,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return titulo + " - " + autor + ", " + editorial;
+        return isbn + " - " + titulo + ", " + autor;
     }
 }

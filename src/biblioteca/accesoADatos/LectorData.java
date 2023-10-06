@@ -5,7 +5,7 @@
  */
 package biblioteca.accesoADatos;
 
-import biblioteca.entidades.Lector;
+import biblioteca.entidades.*;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -111,5 +111,36 @@ public class LectorData {
         }
 
         return lista;
+    }
+    
+    public Lector buscarLector(int dni) {
+        Lector lector = new Lector();
+        LibroData ld = new LibroData();
+        
+        String sql = "SELECT * FROM lector WHERE dni = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                lector.setNroSocio(rs.getInt("nroSocio"));
+                lector.setDni(dni);
+                lector.setApellido(rs.getString("apellido"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setTelefono(rs.getInt("telefono"));
+                lector.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector. " + ex.getMessage());
+        }
+
+        return lector;
     }
 }

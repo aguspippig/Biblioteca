@@ -76,7 +76,7 @@ public class Biblioteca {
             System.out.println(lector2 + " | " + ejemplar1);
         }*/
         
-        ArrayList<Ejemplar> lista2 = ejD.listarEjemplares();
+        ArrayList<Ejemplar> lista2 = ejD.listarEjemplaresXLibro(libro);
         
         for (Ejemplar ejemplar2 : lista2) {
             System.out.println(ejemplar2);

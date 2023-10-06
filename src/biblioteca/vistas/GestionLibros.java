@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
  * @author agus_
  */
 public class GestionLibros extends javax.swing.JInternalFrame {
-    
+
     private LibroData libroData = new LibroData();
+
     /**
      * Creates new form GestionLibros
      */
@@ -155,22 +156,22 @@ public class GestionLibros extends javax.swing.JInternalFrame {
 
     private void jbAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAniadirActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             int isbn = Integer.valueOf(jtISBN.getText());
-        String titulo = jtTitulo.getText();
-        String autor = jtAutor.getText();
-        int anio = Integer.valueOf(jtAnio.getText());
-        String tipo = jtTipo.getText();
-        String editorial = jtEditorial.getText();
+            String titulo = jtTitulo.getText();
+            String autor = jtAutor.getText();
+            int anio = Integer.valueOf(jtAnio.getText());
+            String tipo = jtTipo.getText();
+            String editorial = jtEditorial.getText();
             if (titulo.equals("") || autor.equals("") || tipo.equals("") || editorial.equals("")) {
                 JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
                 JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
             } else {
                 Libro libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
-        
+
                 libroData.agregarLibro(libro);
-                
+
                 jtISBN.setText("");
                 jtTitulo.setText("");
                 jtAutor.setText("");
@@ -182,9 +183,8 @@ public class GestionLibros extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos.");
             JOptionPane.showMessageDialog(null, "En los parametros ISBN y Año deben ingresan numeros enteros.");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jbAniadirActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed

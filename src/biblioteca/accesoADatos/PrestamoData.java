@@ -8,6 +8,7 @@ package biblioteca.accesoADatos;
 import biblioteca.entidades.*;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -165,5 +166,39 @@ public class PrestamoData {
         }
 
         return listaEjemplares;
+    }
+    
+    public ArrayList<Prestamo> listarPrestamosActivos() {
+        ArrayList<Prestamo> lista = new ArrayList<>();
+        EjemplarData ed = new EjemplarData();
+        LectorData ld = new LectorData();
+
+        try {
+            String sql = "SELECT * FROM prestamo WHERE estado = 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Prestamo prestamo = new Prestamo();
+                
+                Date fechaPrestamo = rs.getDate("fechaPrestamo");
+                Date fechaDevoluc = rs.getDate("fechaDevoluc");
+
+                prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
+                prestamo.setFechaPrestamo(fechaPrestamo.toLocalDate());
+                prestamo.setFechaDevoluc(fechaDevoluc.toLocalDate());
+                prestamo.setEjemplar(ed.buscarEjemplar(rs.getInt("ejemplar")));
+                prestamo.setLector(ld.buscarLector(rs.getInt("lector")));
+                prestamo.setEstado(rs.getBoolean("estado"));
+                
+                lista.add(prestamo);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro." + ex.getMessage());
+        }
+        
+        return lista;
     }
 }

@@ -46,6 +46,32 @@ public class EjemplarData {
         }
     }
     
+    public Ejemplar buscarEjemplar(int codigo) {
+        Ejemplar ejemplar = new Ejemplar();
+        LibroData ld = new LibroData();
+        
+        String sql = "SELECT * FROM ejemplar WHERE codigo = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codigo);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                ejemplar.setCodigo(codigo);
+                ejemplar.setLibro(ld.buscarLibroXIsbn(rs.getInt("libro")));
+                ejemplar.setEstado(EstadoEjemplar.valueOf(rs.getString("estado")));
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
+        }
+
+        return ejemplar;
+    }
+    
     public ArrayList<Ejemplar> listarEjemplaresXLector(Lector lector) {
         ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
 
@@ -99,9 +125,37 @@ public class EjemplarData {
                 lista.add(ejemplar);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar." + ex.getMessage());
         }
 
         return lista;
+    }
+    
+    public ArrayList<Ejemplar> listarEjemplaresXLibro(Libro libro) {
+        ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
+
+        try {
+            String sql = "SELECT codigo, ejemplar.estado FROM ejemplar JOIN libro ON (isbn = libro) WHERE libro = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, libro.getIsbn());
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Ejemplar ejemplar = new Ejemplar();
+                
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(libro);
+                ejemplar.setEstado(EstadoEjemplar.valueOf(rs.getString("estado")));
+
+                listaEjemplares.add(ejemplar);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la ejemplar. " + ex.getMessage());
+        }
+
+        return listaEjemplares;
     }
 }
