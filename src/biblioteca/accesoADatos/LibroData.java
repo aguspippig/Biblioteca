@@ -162,7 +162,7 @@ public class LibroData {
         ArrayList<Libro> lista = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM libro";
+            String sql = "SELECT * FROM libro WHERE estado = 1";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
