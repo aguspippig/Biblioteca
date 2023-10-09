@@ -76,11 +76,23 @@ public class Biblioteca {
             System.out.println(lector2 + " | " + ejemplar1);
         }*/
         
-        ArrayList<Ejemplar> lista2 = ejD.listarEjemplaresXLibro(libro);
+        /*ArrayList<Ejemplar> lista2 = ejD.listarEjemplaresXLibro(libro);
         
         for (Ejemplar ejemplar2 : lista2) {
             System.out.println(ejemplar2);
-        }
+        }*/
+        
+        /*ArrayList<Prestamo> lista = pd.listarPrestamosActivos();
+        
+        for (Prestamo prestamo1 : lista) {
+            System.out.println(prestamo1);
+        }*/
+        
+        /*ArrayList<Ejemplar> lista = pd.ejemplaresPrestadosXFecha(LocalDate.of(2023, Month.OCTOBER, 5));
+        
+        for (Ejemplar ejemplar1 : lista) {
+            System.out.println(ejemplar1);
+        }*/
     }
 
 }

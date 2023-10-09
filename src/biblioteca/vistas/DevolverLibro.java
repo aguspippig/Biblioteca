@@ -37,10 +37,10 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jcbPrestamos = new javax.swing.JComboBox<>();
+        jbDevolver = new javax.swing.JButton();
 
         setClosable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(850, 300));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,9 +49,10 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Prestamos activos");
 
-        jcbPrestamos.addActionListener(new java.awt.event.ActionListener() {
+        jbDevolver.setText("Devolver");
+        jbDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbPrestamosActionPerformed(evt);
+                jbDevolverActionPerformed(evt);
             }
         });
 
@@ -62,10 +63,13 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jcbPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbDevolver)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcbPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,20 +80,29 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jcbPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jbDevolver)
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcbPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPrestamosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbPrestamosActionPerformed
+    private void jbDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDevolverActionPerformed
+        Prestamo prestamo = (Prestamo) jcbPrestamos.getSelectedItem();
+        
+        pd.devolverLibro(prestamo);
+        
+        jcbPrestamos.removeAllItems();
+        
+        armarComboBox();
+    }//GEN-LAST:event_jbDevolverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jbDevolver;
     private javax.swing.JComboBox<Prestamo> jcbPrestamos;
     // End of variables declaration//GEN-END:variables
 

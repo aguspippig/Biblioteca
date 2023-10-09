@@ -88,7 +88,7 @@ public class Prestamo {
 
     @Override
     public String toString() {
-        return idPrestamo + " - " + lector.getApellido() + ", " + lector.getNombre() + fechaPrestamo + fechaDevoluc;
+        return idPrestamo + " - " + ejemplar.getLibro().getTitulo() + ", Ejemplar: " + ejemplar.getCodigo() + " - " + lector.getApellido() + ", " + lector.getNombre() + " (" + fechaPrestamo + " - " + fechaDevoluc + ")";
     }
     
     

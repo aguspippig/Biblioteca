@@ -70,20 +70,28 @@
             <Property name="text" type="java.lang.String" value="Prestamo"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmGestionPrestamos">
+            <MenuItem class="javax.swing.JMenuItem" name="jmPrestarLibro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Prestar libro"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmGestionPrestamosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmPrestarLibroActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jmDevolverLibro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Devolver libro"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmDevolverLibroActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmGestionPrestamos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gestion de prestamos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmGestionPrestamosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
