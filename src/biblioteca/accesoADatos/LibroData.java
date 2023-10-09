@@ -108,8 +108,8 @@ public class LibroData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 Libro libro = new Libro();
+                
                 libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
@@ -129,35 +129,62 @@ public class LibroData {
         return listaAutor;
     }
     
-    public ArrayList<Ejemplar> listarEjemplaresXLector(Lector lector){
-        ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
+    public Libro buscarLibroXIsbn(int isbn) {
+        Libro libro = new Libro();
         
+        String sql = "SELECT * FROM libro WHERE isbn = ?";
+
         try {
-            String sql = "SELECT codigo, titulo, autor, isbn FROM libro JOIN ejemplar ON (isbn = libro) JOIN prestamo ON (codigo = ejemplar) WHERE lector = ? AND prestamo.estado = 1";
-            
             PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setInt(1, lector.getNroSocio());
-            
+            ps.setInt(1, isbn);
+
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                Ejemplar ejemplar = new Ejemplar();
-                Libro libro = new Libro();
-                
+
+            if (rs.next()) {
+                libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro. " + ex.getMessage());
+        }
+
+        return libro;
+    }
+    
+    public ArrayList<Libro> listarLibros() {
+        ArrayList<Libro> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM libro";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Libro libro = new Libro();
+
                 libro.setIsbn(rs.getInt("isbn"));
-                
-                ejemplar.setCodigo(rs.getInt("codigo"));
-                ejemplar.setLibro(libro);
-                
-                listaEjemplares.add(ejemplar);
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(rs.getBoolean("estado"));
+
+                lista.add(libro);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la ejemplar. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro." + ex.getMessage());
         }
         
-        return listaEjemplares;
+        return lista;
     }
 }
