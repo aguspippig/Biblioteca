@@ -24,12 +24,28 @@
             <Property name="text" type="java.lang.String" value="Libro"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmAniadirLibro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="A&#xf1;adir libro"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAniadirLibroActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmGestionLibros">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gestion de libros"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmGestionLibrosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmListarLibros">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar libros"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmListarLibrosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
