@@ -262,7 +262,7 @@ public class biblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Escritorio;
+    public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jmAniadirLibro;
     private javax.swing.JMenuItem jmDevolverLibro;
