@@ -216,4 +216,34 @@ public class LibroData {
         
         return lista;
     }
+
+public ArrayList<Libro> listarTodoLibros() {
+        ArrayList<Libro> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM libro";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Libro libro = new Libro();
+
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(rs.getBoolean("estado"));
+
+                lista.add(libro);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro." + ex.getMessage());
+        }
+        
+        return lista;
+    }
 }

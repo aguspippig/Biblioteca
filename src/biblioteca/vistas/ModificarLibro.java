@@ -268,7 +268,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
  private void armarCombobox(){
      
-     libros = libroData.listarLibros();
+     libros = libroData.listarTodoLibros();
      
      for (Libro libro : libros) {
          jcISBN.addItem(libro.getIsbn());
