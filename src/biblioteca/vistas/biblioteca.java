@@ -34,8 +34,11 @@ public class biblioteca extends javax.swing.JFrame {
         jmAniadirLibro = new javax.swing.JMenuItem();
         jmGestionLibros = new javax.swing.JMenuItem();
         jmListarLibros = new javax.swing.JMenuItem();
-        jmEjemplar = new javax.swing.JMenu();
-        jmGestionEjemplares = new javax.swing.JMenuItem();
+        jmListaEjemplares = new javax.swing.JMenu();
+        jmBuscarEjemplar = new javax.swing.JMenuItem();
+        jmAgregarEjemplar = new javax.swing.JMenuItem();
+        jmActualizarEjemplar = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jmPrestamo = new javax.swing.JMenu();
         jmPrestarLibro = new javax.swing.JMenuItem();
         jmDevolverLibro = new javax.swing.JMenuItem();
@@ -94,17 +97,41 @@ public class biblioteca extends javax.swing.JFrame {
 
         jMenuBar1.add(jmLibro);
 
-        jmEjemplar.setText("Ejemplar");
+        jmListaEjemplares.setText("Ejemplar");
 
-        jmGestionEjemplares.setText("Gestion de ejemplares");
-        jmGestionEjemplares.addActionListener(new java.awt.event.ActionListener() {
+        jmBuscarEjemplar.setText("Buscar Ejemplar");
+        jmBuscarEjemplar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmGestionEjemplaresActionPerformed(evt);
+                jmBuscarEjemplarActionPerformed(evt);
             }
         });
-        jmEjemplar.add(jmGestionEjemplares);
+        jmListaEjemplares.add(jmBuscarEjemplar);
 
-        jMenuBar1.add(jmEjemplar);
+        jmAgregarEjemplar.setText("Agregar Ejemplar");
+        jmAgregarEjemplar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAgregarEjemplarActionPerformed(evt);
+            }
+        });
+        jmListaEjemplares.add(jmAgregarEjemplar);
+
+        jmActualizarEjemplar.setText("Actualizar Ejemplar");
+        jmActualizarEjemplar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmActualizarEjemplarActionPerformed(evt);
+            }
+        });
+        jmListaEjemplares.add(jmActualizarEjemplar);
+
+        jMenuItem2.setText("Lista de Ejemplares");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jmListaEjemplares.add(jMenuItem2);
+
+        jMenuBar1.add(jmListaEjemplares);
 
         jmPrestamo.setText("Prestamo");
 
@@ -172,14 +199,14 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio.moveToFront(gLibros);
     }//GEN-LAST:event_jmAniadirLibroActionPerformed
 
-    private void jmGestionEjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGestionEjemplaresActionPerformed
+    private void jmBuscarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBuscarEjemplarActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        GestionEjemplares gEjemplares = new GestionEjemplares();
+        BuscarEjemplar gEjemplares = new BuscarEjemplar();
         gEjemplares.setVisible(true);
         Escritorio.add(gEjemplares);
         Escritorio.moveToFront(gEjemplares);
-    }//GEN-LAST:event_jmGestionEjemplaresActionPerformed
+    }//GEN-LAST:event_jmBuscarEjemplarActionPerformed
 
     private void jmPrestarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPrestarLibroActionPerformed
         Escritorio.removeAll();
@@ -226,6 +253,33 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio.moveToFront(bp);
     }//GEN-LAST:event_jmGestionPrestamosActionPerformed
 
+    private void jmAgregarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarEjemplarActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        AgregarEjemplar agregarEjemplar = new AgregarEjemplar();
+        agregarEjemplar.setVisible(true);
+        Escritorio.add(agregarEjemplar);
+        Escritorio.moveToFront(agregarEjemplar);
+    }//GEN-LAST:event_jmAgregarEjemplarActionPerformed
+
+    private void jmActualizarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmActualizarEjemplarActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ActualizarEjemplar aj = new ActualizarEjemplar();
+        aj.setVisible(true);
+        Escritorio.add(aj);
+        Escritorio.moveToFront(aj);
+    }//GEN-LAST:event_jmActualizarEjemplarActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ListaEjemplares le = new ListaEjemplares();
+        le.setVisible(true);
+        Escritorio.add(le);
+        Escritorio.moveToFront(le);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,15 +318,18 @@ public class biblioteca extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jmActualizarEjemplar;
+    private javax.swing.JMenuItem jmAgregarEjemplar;
     private javax.swing.JMenuItem jmAniadirLibro;
+    private javax.swing.JMenuItem jmBuscarEjemplar;
     private javax.swing.JMenuItem jmDevolverLibro;
-    private javax.swing.JMenu jmEjemplar;
-    private javax.swing.JMenuItem jmGestionEjemplares;
     private javax.swing.JMenuItem jmGestionLectores;
     private javax.swing.JMenuItem jmGestionLibros;
     private javax.swing.JMenuItem jmGestionPrestamos;
     private javax.swing.JMenu jmLector;
     private javax.swing.JMenu jmLibro;
+    private javax.swing.JMenu jmListaEjemplares;
     private javax.swing.JMenuItem jmListarLibros;
     private javax.swing.JMenu jmPrestamo;
     private javax.swing.JMenuItem jmPrestarLibro;
