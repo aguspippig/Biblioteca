@@ -14,5 +14,6 @@ public enum EstadoEjemplar {
     PRESTADO,
     RETRASO,
     REPARACION,
-    DISPONIBLE
+    DISPONIBLE,
+    NO_DISPONIBLE
 }
