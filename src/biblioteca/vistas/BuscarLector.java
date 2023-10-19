@@ -14,14 +14,15 @@ import javax.swing.JOptionPane;
  * @author marti
  */
 public class BuscarLector extends javax.swing.JInternalFrame {
-    private LectorData lectorData=new LectorData();
+
+    private LectorData lectorData = new LectorData();
 
     /**
      * Creates new form ListarLector
      */
     public BuscarLector() {
         initComponents();
-        
+
     }
 
     /**
@@ -56,6 +57,8 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         jbLimpiar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Buscar Lector");
 
@@ -86,24 +89,6 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         jbBuscarDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarDniActionPerformed(evt);
-            }
-        });
-
-        jtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtIdActionPerformed(evt);
-            }
-        });
-
-        jtDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDniActionPerformed(evt);
-            }
-        });
-
-        jtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtApellidoActionPerformed(evt);
             }
         });
 
@@ -235,110 +220,88 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtIdActionPerformed
-
-    private void jtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtDniActionPerformed
-
-    private void jtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtApellidoActionPerformed
-
     private void jbBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarIDActionPerformed
 
-int id = Integer.valueOf(jtId.getText());
+        int id = Integer.valueOf(jtId.getText());
 
-Lector lector=lectorData.buscarLectorId(id);
+        Lector lector = lectorData.buscarLectorId(id);
 
-jtDni.setText(lector.getDni()+"");
-jtNombre.setText(lector.getNombre());
-jtApellido.setText(lector.getApellido());
-jtDomicilio.setText(lector.getDomicilio());
-jtTelefono.setText(lector.getTelefono()+"");
-jtMail.setText(lector.getMail());
-jrEstado.setSelected(lector.isEstado());
-
-
-
-
-        
+        jtDni.setText(lector.getDni() + "");
+        jtNombre.setText(lector.getNombre());
+        jtApellido.setText(lector.getApellido());
+        jtDomicilio.setText(lector.getDomicilio());
+        jtTelefono.setText(lector.getTelefono() + "");
+        jtMail.setText(lector.getMail());
+        jrEstado.setSelected(lector.isEstado());
     }//GEN-LAST:event_jbBuscarIDActionPerformed
 
     private void jbBuscarDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarDniActionPerformed
         int dni = Integer.valueOf(jtDni.getText());
 
-Lector lector=lectorData.buscarLector(dni);
+        Lector lector = lectorData.buscarLector(dni);
 
-jtId.setText(lector.getNroSocio()+"");
-jtNombre.setText(lector.getNombre());
-jtApellido.setText(lector.getApellido());
-jtDomicilio.setText(lector.getDomicilio());
-jtTelefono.setText(lector.getTelefono()+"");
-jtMail.setText(lector.getMail());
-jrEstado.setSelected(lector.isEstado());
+        jtId.setText(lector.getNroSocio() + "");
+        jtNombre.setText(lector.getNombre());
+        jtApellido.setText(lector.getApellido());
+        jtDomicilio.setText(lector.getDomicilio());
+        jtTelefono.setText(lector.getTelefono() + "");
+        jtMail.setText(lector.getMail());
+        jrEstado.setSelected(lector.isEstado());
     }//GEN-LAST:event_jbBuscarDniActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-jtId.setText("");
-jtDni.setText("");
-    jtTelefono.setText("");
-    jtNombre.setText("");
-    jtApellido.setText("");
-    jtDomicilio.setText("");
-    jtMail.setText("");
-//jrEstado.setEnabled(false);
-// TODO add your handling code here:
+        jtId.setText("");
+        jtDni.setText("");
+        jtTelefono.setText("");
+        jtNombre.setText("");
+        jtApellido.setText("");
+        jtDomicilio.setText("");
+        jtMail.setText("");
+        jrEstado.setSelected(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-       
-        
-        
-            
-        try{
-        int id = Integer.valueOf(jtId.getText());
-        int dni = Integer.valueOf(jtDni.getText());
-         int telefono = Integer.valueOf(jtTelefono.getText());
-        String apellido = jtApellido.getText();
-        String nombre = jtNombre.getText();
-        String domicilio=jtDomicilio.getText();
-        
-        String mail = jtMail.getText();
-        boolean estado = jrEstado.isSelected();
-        
-              Lector lector = new Lector(id ,dni, telefono, apellido, nombre, domicilio, mail, estado);
-                lectorData.modificarLector(lector);
-               
-        }catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null,"Los campos no deben estar vacios "+ ex );
-            
-        }   catch (NumberFormatException ex){
-                        JOptionPane.showMessageDialog(null,"Ingrese numeros en los campos solicitados "+ ex );
 
+        try {
+            int id = Integer.valueOf(jtId.getText());
+            int dni = Integer.valueOf(jtDni.getText());
+            int telefono = Integer.valueOf(jtTelefono.getText());
+            String apellido = jtApellido.getText();
+            String nombre = jtNombre.getText();
+            String domicilio = jtDomicilio.getText();
+
+            String mail = jtMail.getText();
+            boolean estado = jrEstado.isSelected();
+
+            Lector lector = new Lector(id, dni, telefono, apellido, nombre, domicilio, mail, estado);
+            lectorData.modificarLector(lector);
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios " + ex);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Ingrese numeros en los campos solicitados " + ex);
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-       
-          int id = Integer.valueOf(jtId.getText());
+
+        int id = Integer.valueOf(jtId.getText());
         int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar Lector: " + jtId.getText() + "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (respuesta == JOptionPane.YES_OPTION) {
             lectorData.eliminarLector(id);
-       
+
             jtId.setText("");
-jtDni.setText("");
-    jtTelefono.setText("");
-    jtNombre.setText("");
-    jtApellido.setText("");
-    jtDomicilio.setText("");
-    jtMail.setText("");
+            jtDni.setText("");
+            jtTelefono.setText("");
+            jtNombre.setText("");
+            jtApellido.setText("");
+            jtDomicilio.setText("");
+            jtMail.setText("");
     }//GEN-LAST:event_jbEliminarActionPerformed
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

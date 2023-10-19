@@ -29,6 +29,8 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmLector = new javax.swing.JMenu();
+        jmListor = new javax.swing.JMenuItem();
+        jmListadoLector = new javax.swing.JMenuItem();
         jmGestionLectores = new javax.swing.JMenuItem();
         jmLibro = new javax.swing.JMenu();
         jmAniadirLibro = new javax.swing.JMenuItem();
@@ -58,6 +60,22 @@ public class biblioteca extends javax.swing.JFrame {
         );
 
         jmLector.setText("Lector");
+
+        jmListor.setText("Buscar Lector");
+        jmListor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListorActionPerformed(evt);
+            }
+        });
+        jmLector.add(jmListor);
+
+        jmListadoLector.setText("Listar Lector");
+        jmListadoLector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListadoLectorActionPerformed(evt);
+            }
+        });
+        jmLector.add(jmListadoLector);
 
         jmGestionLectores.setText("Gestion de lectores");
         jmGestionLectores.addActionListener(new java.awt.event.ActionListener() {
@@ -168,27 +186,27 @@ public class biblioteca extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(Escritorio)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(Escritorio)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmGestionLectoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGestionLectoresActionPerformed
+    private void jmListorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListorActionPerformed
         Escritorio.removeAll();
         Escritorio.repaint();
-        GestionLectores gLectores = new GestionLectores();
-        gLectores.setVisible(true);
-        Escritorio.add(gLectores);
-        Escritorio.moveToFront(gLectores);
-    }//GEN-LAST:event_jmGestionLectoresActionPerformed
+        BuscarLector listarLector = new BuscarLector();
+        listarLector.setVisible(true);
+        Escritorio.add(listarLector);
+        Escritorio.moveToFront(listarLector);
+    }//GEN-LAST:event_jmListorActionPerformed
 
     private void jmAniadirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAniadirLibroActionPerformed
         Escritorio.removeAll();
@@ -280,6 +298,24 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio.moveToFront(le);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jmListadoLectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListadoLectorActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ListadoLector listaLector = new ListadoLector();
+        listaLector.setVisible(true);
+        Escritorio.add(listaLector);
+        Escritorio.moveToFront(listaLector);
+    }//GEN-LAST:event_jmListadoLectorActionPerformed
+
+    private void jmGestionLectoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGestionLectoresActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        GestionLectores gLectores = new GestionLectores();
+        gLectores.setVisible(true);
+        Escritorio.add(gLectores);
+        Escritorio.moveToFront(gLectores);
+    }//GEN-LAST:event_jmGestionLectoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -330,7 +366,9 @@ public class biblioteca extends javax.swing.JFrame {
     private javax.swing.JMenu jmLector;
     private javax.swing.JMenu jmLibro;
     private javax.swing.JMenu jmListaEjemplares;
+    private javax.swing.JMenuItem jmListadoLector;
     private javax.swing.JMenuItem jmListarLibros;
+    private javax.swing.JMenuItem jmListor;
     private javax.swing.JMenu jmPrestamo;
     private javax.swing.JMenuItem jmPrestarLibro;
     // End of variables declaration//GEN-END:variables

@@ -28,7 +28,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
     public ListaLibros() {
         initComponents();
         cabecera();
-        jtBusqueda.setEnabled(false);
+        
     }
 
     /**
@@ -49,9 +49,9 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         jrDisponibles = new javax.swing.JRadioButton();
         jrNoDisponibles = new javax.swing.JRadioButton();
         jbNuevo = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jcAutor = new javax.swing.JCheckBox();
-        jtBusqueda = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -108,25 +108,9 @@ public class ListaLibros extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+
         jLabel2.setText("Busqueda por autor");
-
-        jcAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcAutorActionPerformed(evt);
-            }
-        });
-
-        jtBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtBusquedaActionPerformed(evt);
-            }
-        });
-        jtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtBusquedaKeyReleased(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +118,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
@@ -144,47 +128,39 @@ public class ListaLibros extends javax.swing.JInternalFrame {
                 .addComponent(jbModificar)
                 .addGap(83, 83, 83)
                 .addComponent(jbSalir)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jrDisponibles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jrNoDisponibles)
-                        .addGap(110, 110, 110))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcAutor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addGap(110, 110, 110))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                                .addComponent(jtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrDisponibles)
-                            .addComponent(jrNoDisponibles))
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jcAutor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrDisponibles)
+                    .addComponent(jrNoDisponibles))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -249,52 +225,19 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         biblioteca.Escritorio.moveToFront(gLibros);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
-    private void jtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaKeyReleased
-        borrarFilas();
-        
-        libros = ld.listarLibros();
-        for (Libro libro : libros) {
-            if(libro.getAutor().toLowerCase().startsWith(jtBusqueda.getText().toLowerCase())){
-                
-                jModelo.addRow(new Object[]{
-                   libro.getIsbn(),
-                    libro.getTitulo(),
-                    libro.getAutor(),
-                    libro.getAnio(),
-                    libro.getTipo(),
-                    libro.getEditorial()});
-            }
-                
-        }
-        
-    }//GEN-LAST:event_jtBusquedaKeyReleased
-
-    private void jcAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAutorActionPerformed
-        limpiar();
-        if (verificarCuadrado()){
-            jtBusqueda.setEnabled(true);
-        } else {
-            jtBusqueda.setEnabled(false);
-        }
-    }//GEN-LAST:event_jcAutorActionPerformed
-
-    private void jtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBusquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtBusquedaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JCheckBox jcAutor;
     private javax.swing.JRadioButton jrDisponibles;
     private javax.swing.JRadioButton jrNoDisponibles;
-    private javax.swing.JTextField jtBusqueda;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
     public void cabecera(){
@@ -313,13 +256,5 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         for (; f >= 0; f--) {
             jModelo.removeRow(f);
         }
-    }
-    private boolean verificarCuadrado(){
-        if (jcAutor.isSelected()){
-            return true;
-    } else return false;
-    }
-    private void limpiar(){
-        jtBusqueda.setText("");
     }
 }

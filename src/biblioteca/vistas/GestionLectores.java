@@ -16,14 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class GestionLectores extends javax.swing.JInternalFrame {
 
-private LectorData lectorData;
-private final Connection con;
-   
-    
+    private LectorData lectorData;
+    private final Connection con;
+
     public GestionLectores() {
         initComponents();
-        this.lectorData=new LectorData();
-        this.con=Conexion.conectar();
+        this.lectorData = new LectorData();
+        this.con = Conexion.conectar();
     }
 
     /**
@@ -51,6 +50,8 @@ private final Connection con;
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 255, 204));
         jLabel1.setText("Agregar Lectores");
@@ -66,30 +67,6 @@ private final Connection con;
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimpiarActionPerformed(evt);
-            }
-        });
-
-        jtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtTelefonoActionPerformed(evt);
-            }
-        });
-
-        jtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtApellidoActionPerformed(evt);
-            }
-        });
-
-        jtDomicilio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDomicilioActionPerformed(evt);
-            }
-        });
-
-        jtMail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtMailActionPerformed(evt);
             }
         });
 
@@ -180,7 +157,6 @@ private final Connection con;
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
 
         try {
-
             int dni = Integer.parseInt(jtDni.getText());
             int tel = Integer.parseInt(jtTelefono.getText());
             String nombre = jtNombre.getText();
@@ -190,45 +166,25 @@ private final Connection con;
             boolean estado = true;
             Lector lector = new Lector(dni, tel, nombre, apellido, domicilio, mail, estado);
 
-           
             if ("".equals(nombre) || "".equals(apellido) || "".equals(mail)) {
-                JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios");
-            }else
-             lectorData.agregarLector(lector);
+                JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios.");
+            } else {
+                lectorData.agregarLector(lector);
+            }
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios" + ex);
-
+            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios." + ex);
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un numero en los campos numericos" + ex);
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero en los campos numericos. " + ex);
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_jbAgregarActionPerformed
 
-    private void jtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtTelefonoActionPerformed
-
-    private void jtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtApellidoActionPerformed
-
-    private void jtDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDomicilioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtDomicilioActionPerformed
-
-    private void jtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtMailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtMailActionPerformed
-
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-    jtDni.setText("");
-    jtTelefono.setText("");
-    jtNombre.setText("");
-    jtApellido.setText("");
-    jtDomicilio.setText("");
-    jtMail.setText("");
-    
+        jtDni.setText("");
+        jtTelefono.setText("");
+        jtNombre.setText("");
+        jtApellido.setText("");
+        jtDomicilio.setText("");
+        jtMail.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
 
