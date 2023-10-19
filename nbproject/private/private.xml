@@ -3,13 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/vistas/GestionLibros.java</file>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/vistas/biblioteca.java</file>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/vistas/DevolverLibro.java</file>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/vistas/PrestarLibro.java</file>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/accesoADatos/PrestamoData.java</file>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/entidades/Lector.java</file>
-            <file>file:/C:/Users/agus_/OneDrive/Documents/NetBeansProjects/Biblioteca/src/biblioteca/entidades/Prestamo.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/accesoADatos/LectorData.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/ModificarLibro.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/GestionLectores.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/GestionLibros.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/DevolverLibro.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/biblioteca.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/entidades/Lector.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/GestionEjemplares.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/ModificarLector.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/accesoADatos/PrestamoData.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/ListaLibros.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/PrestarLibro.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/ListarLector.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/BusquedaPrestamos.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/accesoADatos/LibroData.java</file>
         </group>
     </open-files>
 </project-private>

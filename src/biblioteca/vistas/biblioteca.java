@@ -29,6 +29,8 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmLector = new javax.swing.JMenu();
+        jmListor = new javax.swing.JMenuItem();
+        jmListadoLector = new javax.swing.JMenuItem();
         jmGestionLectores = new javax.swing.JMenuItem();
         jmLibro = new javax.swing.JMenu();
         jmAniadirLibro = new javax.swing.JMenuItem();
@@ -51,10 +53,26 @@ public class biblioteca extends javax.swing.JFrame {
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
         );
 
         jmLector.setText("Lector");
+
+        jmListor.setText("Buscar Lector");
+        jmListor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListorActionPerformed(evt);
+            }
+        });
+        jmLector.add(jmListor);
+
+        jmListadoLector.setText("Listar Lector");
+        jmListadoLector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListadoLectorActionPerformed(evt);
+            }
+        });
+        jmLector.add(jmListadoLector);
 
         jmGestionLectores.setText("Gestion de lectores");
         jmGestionLectores.addActionListener(new java.awt.event.ActionListener() {
@@ -146,9 +164,7 @@ public class biblioteca extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Escritorio)
         );
 
         pack();
@@ -226,6 +242,24 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio.moveToFront(bp);
     }//GEN-LAST:event_jmGestionPrestamosActionPerformed
 
+    private void jmListorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListorActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        BuscarLector listarLector = new BuscarLector();
+        listarLector.setVisible(true);
+        Escritorio.add(listarLector);
+        Escritorio.moveToFront(listarLector);// TODO add your handling code here:
+    }//GEN-LAST:event_jmListorActionPerformed
+
+    private void jmListadoLectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListadoLectorActionPerformed
+Escritorio.removeAll();
+        Escritorio.repaint();
+       ListadoLector listaLector= new ListadoLector();
+        listaLector.setVisible(true);
+        Escritorio.add(listaLector);
+        Escritorio.moveToFront(listaLector);        // TODO add your handling code here:
+    }//GEN-LAST:event_jmListadoLectorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,7 +307,9 @@ public class biblioteca extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmGestionPrestamos;
     private javax.swing.JMenu jmLector;
     private javax.swing.JMenu jmLibro;
+    private javax.swing.JMenuItem jmListadoLector;
     private javax.swing.JMenuItem jmListarLibros;
+    private javax.swing.JMenuItem jmListor;
     private javax.swing.JMenu jmPrestamo;
     private javax.swing.JMenuItem jmPrestarLibro;
     // End of variables declaration//GEN-END:variables

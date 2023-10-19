@@ -21,12 +21,12 @@ public class Biblioteca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        LibroData ld = new LibroData();
-        PrestamoData pd = new PrestamoData();
-        LectorData lectorD = new LectorData();
-        EjemplarData ejD = new EjemplarData();
+     //   LibroData ld = new LibroData();
+      //  PrestamoData pd = new PrestamoData();
+       // LectorData lectorD = new LectorData();
+        //EjemplarData ejD = new EjemplarData();
 
-        Libro libro = new Libro(123456789,"Libro de prueba","Grupo 44",2023,"Programacion","Argetina Programa",true);
+       // Libro libro = new Libro(123456789,"Libro de prueba","Grupo 44",2023,"Programacion","Argetina Programa",true);
         
         //ld.agregarLibro(libro);
         
@@ -40,25 +40,25 @@ public class Biblioteca {
         
         //ld.agregarLibro(libro);
         
-        ArrayList <Libro> listaAutor= new ArrayList<>(); 
+       // ArrayList <Libro> listaAutor= new ArrayList<>(); 
         
-        listaAutor=ld.buscarLibroXAutor("Gabriel García Marquéz");
+        //listaAutor=ld.buscarLibroXAutor("Gabriel García Marquéz");
         
 //        for (Libro libro : listaAutor) {
 //            System.out.println(libro.getIsbn()+" -"+libro);
 //        }
         
-        Lector lector = new Lector(1,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
+        //Lector lector = new Lector(1,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
         
-        Lector lector2 = new Lector(6,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
+        //Lector lector2 = new Lector(6,34657990, 35417654, "Lopex", "Rita", "Las Acacias 236", "lopexrita666@gmail.com", true);
         
         //lectorD.agregarLector(lector);
 
-        Ejemplar ejemplar = new Ejemplar(3, libro, EstadoEjemplar.DISPONIBLE);
+     //   Ejemplar ejemplar = new Ejemplar(3, libro, EstadoEjemplar.DISPONIBLE);
         
         //ejD.agregarEjemplar(ejemplar);
         
-        Prestamo prestamo = new Prestamo(11,LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
+       // Prestamo prestamo = new Prestamo(11,LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
 
         //pd.prestarLibro(prestamo);
         
