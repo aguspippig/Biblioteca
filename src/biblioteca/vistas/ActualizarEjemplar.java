@@ -1,27 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
-    public boolean verifEjemplar(Ejemplar ejemplar) {
-        try {
-            String sql = "SELECT * FROM ejemplar WHERE codigo = ?";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setInt(1, ejemplar.getCodigo());
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next() && rs.getString("estado")) {
-                return true;
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
-        }
-
-        return false;
-    }
-
  */
 package biblioteca.vistas;
 
