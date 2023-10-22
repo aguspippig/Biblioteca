@@ -72,6 +72,29 @@ public class EjemplarData {
         return ejemplar;
     }
     
+    public void actualizarEjemplar(Ejemplar ejemplar) {
+        
+        try {
+            String sql = "UPDATE ejemplar SET estado = ? WHERE codigo = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, ejemplar.getEstado().toString());
+            ps.setInt(2, ejemplar.getCodigo());
+
+            int resultado = ps.executeUpdate();
+
+            if (resultado == 1) {
+                JOptionPane.showMessageDialog(null, "Ejemplar actualizado correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en actualización.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
+        }
+    }
+    
     public ArrayList<Ejemplar> listarEjemplaresXLector(Lector lector) {
         ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
 

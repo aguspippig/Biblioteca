@@ -134,6 +134,27 @@ public class PrestamoData {
         return false;
     }
 
+    public boolean verifEjemplar(Ejemplar ejemplar) {
+        try {
+            String sql = "SELECT * FROM ejemplar WHERE codigo = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, ejemplar.getCodigo());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
+        }
+
+        return false;
+    }
+    
     public ArrayList<Prestamo> ejemplaresPrestadosXFecha(LocalDate fechaPrestamo) {
         ArrayList<Prestamo> listaPrestamos = new ArrayList<>();
         EjemplarData ed = new EjemplarData();

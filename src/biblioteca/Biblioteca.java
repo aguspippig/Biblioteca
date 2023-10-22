@@ -24,7 +24,7 @@ public class Biblioteca {
      //   LibroData ld = new LibroData();
       //  PrestamoData pd = new PrestamoData();
        // LectorData lectorD = new LectorData();
-        //EjemplarData ejD = new EjemplarData();
+        EjemplarData ejD = new EjemplarData();
 
        // Libro libro = new Libro(123456789,"Libro de prueba","Grupo 44",2023,"Programacion","Argetina Programa",true);
         
@@ -54,9 +54,11 @@ public class Biblioteca {
         
         //lectorD.agregarLector(lector);
 
-     //   Ejemplar ejemplar = new Ejemplar(3, libro, EstadoEjemplar.DISPONIBLE);
+        //Ejemplar ejemplar = new Ejemplar(3, libro, EstadoEjemplar.REPARACION);
         
         //ejD.agregarEjemplar(ejemplar);
+        
+        //ejD.actualizarEjemplar(ejemplar);
         
        // Prestamo prestamo = new Prestamo(11,LocalDate.of(2023, Month.APRIL, 1), LocalDate.of(2023, Month.APRIL, 8), ejemplar, lector, true);
 

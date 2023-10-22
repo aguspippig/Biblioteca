@@ -90,6 +90,7 @@ public class BuscarEjemplar extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(700, 500));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N

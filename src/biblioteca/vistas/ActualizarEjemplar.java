@@ -1,20 +1,51 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+    public boolean verifEjemplar(Ejemplar ejemplar) {
+        try {
+            String sql = "SELECT * FROM ejemplar WHERE codigo = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, ejemplar.getCodigo());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next() && rs.getString("estado")) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
+        }
+
+        return false;
+    }
+
  */
 package biblioteca.vistas;
+
+import biblioteca.accesoADatos.EjemplarData;
+import biblioteca.accesoADatos.PrestamoData;
+import biblioteca.entidades.Ejemplar;
+import biblioteca.entidades.EstadoEjemplar;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author agus_
  */
 public class ActualizarEjemplar extends javax.swing.JInternalFrame {
-
+    private EjemplarData ejData= new EjemplarData();
+    private PrestamoData prData=new PrestamoData();
+    
     /**
      * Creates new form ActualizarEjemplar
      */
     public ActualizarEjemplar() {
         initComponents();
+        cargarComboBoxEstadoVacio();
     }
 
     /**
@@ -26,21 +57,155 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jcbEstado = new javax.swing.JComboBox<>();
+        jtCod = new javax.swing.JTextField();
+        jbActualiz = new javax.swing.JButton();
+        jbLimpiar = new javax.swing.JButton();
+
+        setClosable(true);
+        setPreferredSize(new java.awt.Dimension(700, 300));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ACTUALIZAR EJEMPLAR");
+
+        jLabel2.setText("Ingrese código ");
+
+        jLabel3.setText("Seleccione estado ");
+
+        jcbEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbEstadoMouseClicked(evt);
+            }
+        });
+
+        jbActualiz.setText("Actualizar");
+        jbActualiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizActionPerformed(evt);
+            }
+        });
+
+        jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(208, 208, 208))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbActualiz)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(111, 111, 111))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jbLimpiar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbActualiz)
+                    .addComponent(jbLimpiar))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
+        // TODO add your handling code here:
+        cargarComboBoxEstado();
+    }//GEN-LAST:event_jcbEstadoMouseClicked
+
+    private void jbActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            String strCod = jtCod.getText();
+
+            if (strCod.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un código válido");
+                return;
+            }
+
+            int ejCod = Integer.parseInt(strCod);
+
+            EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem();
+
+            Ejemplar ejActualiz = new Ejemplar();
+            ejActualiz.setCodigo(ejCod);
+            ejActualiz.setEstado(estadoEj);
+
+            boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
+
+            if (hayEjemplar) {
+                ejData.actualizarEjemplar(ejActualiz);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe ejemplar con ese código.");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El valor ingresado no es un código válido.");
+        }
+    }//GEN-LAST:event_jbActualizActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        // TODO add your handling code here:
+        jtCod.setText("");
+        cargarComboBoxEstadoVacio();
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbActualiz;
+    private javax.swing.JButton jbLimpiar;
+    private javax.swing.JComboBox<EstadoEjemplar> jcbEstado;
+    private javax.swing.JTextField jtCod;
     // End of variables declaration//GEN-END:variables
+    private void cargarComboBoxEstadoVacio() {
+        jcbEstado.setModel(new DefaultComboBoxModel<>());
+    }
+    
+    private void cargarComboBoxEstado(){
+        jcbEstado.setModel(new DefaultComboBoxModel<>(EstadoEjemplar.values()));
+    }
+
 }
+
