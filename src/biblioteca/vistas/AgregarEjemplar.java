@@ -12,6 +12,7 @@ import biblioteca.entidades.EstadoEjemplar;
 import biblioteca.entidades.Libro;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -188,30 +189,42 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
-        borrarFilas();
         
-        Libro ejLibro=(Libro)jcbLibro.getModel().getSelectedItem();
-        
-        EstadoEjemplar estadoEj=(EstadoEjemplar)jcbEstado.getModel().getSelectedItem();
-        
-        Ejemplar ejNvo=new Ejemplar();
-        
-        ejNvo.setLibro(ejLibro);
-        ejNvo.setEstado(estadoEj);
-        
-        ejData.agregarEjemplar(ejNvo);
-        
-        listaEjemplares.add(ejNvo);
+        try {
+            
+            if (jcbLibro.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
+                return;
+            }
 
-        for (Ejemplar lEj : listaEjemplares) {
-            jtEjemplarModelo.addRow(new Object[]{
-                lEj.getCodigo(),
-                lEj.getLibro().getIsbn(),
-                lEj.getLibro().getTitulo(),
-                lEj.getLibro().getAutor(),
-                lEj.getEstado(),});
+            borrarFilas();
 
-        }//finForEach
+            Libro ejLibro = (Libro) jcbLibro.getModel().getSelectedItem();
+
+            EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem();
+
+            Ejemplar ejNvo = new Ejemplar();
+
+            ejNvo.setLibro(ejLibro);
+            ejNvo.setEstado(estadoEj);
+
+            ejData.agregarEjemplar(ejNvo);
+
+            listaEjemplares.add(ejNvo);
+
+            for (Ejemplar lEj : listaEjemplares) {
+                jtEjemplarModelo.addRow(new Object[]{
+                    lEj.getCodigo(),
+                    lEj.getLibro().getIsbn(),
+                    lEj.getLibro().getTitulo(),
+                    lEj.getLibro().getAutor(),
+                    lEj.getEstado(),});
+
+            }//finForEach
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Se produjo un error al agregar el ejemplar. " + e.getMessage());
+        }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jcbLibroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbLibroMouseClicked
