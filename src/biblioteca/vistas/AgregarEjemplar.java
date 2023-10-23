@@ -256,6 +256,7 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Libro> jcbLibro;
     private javax.swing.JTable jtEj;
     // End of variables declaration//GEN-END:variables
+    
     private void armarCabecera() {
         jtEjemplarModelo.addColumn("Código");
         jtEjemplarModelo.addColumn("ISBN");
@@ -279,6 +280,8 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
     }
 
     private void cargarComboBoxLibro(){
+        jcbLibro.removeAllItems();
+        
         listaLibros=libroData.listarLibros();
         
         for (int i = 0; i < listaLibros.size(); i++) {

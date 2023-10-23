@@ -9,7 +9,9 @@ import biblioteca.entidades.*;
 import java.awt.event.ItemEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -169,7 +171,7 @@ public class PrestarLibro extends javax.swing.JInternalFrame {
 
     private void jcbLibrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbLibrosItemStateChanged
         Libro libro = (Libro) jcbLibros.getSelectedItem();
-        
+
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             jcbEjemplares.removeAllItems();
             armarComboBoxEjemplares();
@@ -177,26 +179,45 @@ public class PrestarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbLibrosItemStateChanged
 
     private void jbPrestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrestarActionPerformed
-        Lector lector = (Lector) jcbLectores.getSelectedItem();
-        Ejemplar ejemplar = (Ejemplar) jcbEjemplares.getSelectedItem();
-        Date fechaP = jDatePrestamo.getDate();
-        Date fechaD = jDateDevolucion.getDate();
-        
-        LocalDate ldPrestamo = fechaP.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate ldDevolucion = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        Prestamo prestamo = new Prestamo(ldPrestamo, ldDevolucion, ejemplar, lector, true);
-        
-        pd.prestarLibro(prestamo);
-        
-        jcbLectores.removeAllItems();
-        armarComboBoxLectores();
-        
-        jcbLibros.removeAllItems();
-        armarComboBoxLibros();
-        
-        jcbEjemplares.removeAllItems();
-        armarComboBoxEjemplares();
+
+        try {
+            Lector lector = (Lector) jcbLectores.getSelectedItem();
+
+            Ejemplar ejemplar = (Ejemplar) jcbEjemplares.getSelectedItem();
+            Date fechaP = jDatePrestamo.getDate();
+            Date fechaD = jDateDevolucion.getDate();
+
+            LocalDate ldPrestamo = fechaP.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate ldDevolucion = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            long diferencia = ChronoUnit.DAYS.between(ldPrestamo, ldDevolucion);
+
+            Prestamo prestamo = new Prestamo(ldPrestamo, ldDevolucion, ejemplar, lector, true);
+
+            if (diferencia <= 0) {
+                JOptionPane.showMessageDialog(this, "La fecha de devolucion debe ser anterior a la fecha de prestamo.");
+            } else {
+                pd.prestarLibro(prestamo);
+            }
+
+            jcbLectores.removeAllItems();
+            armarComboBoxLectores();
+
+            jcbLibros.removeAllItems();
+            armarComboBoxLibros();
+
+            jcbEjemplares.removeAllItems();
+            armarComboBoxEjemplares();
+        } catch (NullPointerException ex) {
+
+            if (jDatePrestamo.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Ingrese una fecha de prestamo.");
+            } else if (jDateDevolucion.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Ingrese una fecha de devolucion.");
+            } else if (jcbEjemplares.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "No hay ejeplares disponibles.");
+            }
+        }
     }//GEN-LAST:event_jbPrestarActionPerformed
 
 
@@ -233,12 +254,12 @@ public class PrestarLibro extends javax.swing.JInternalFrame {
 
     private void armarComboBoxEjemplares() {
         Libro libro = (Libro) jcbLibros.getSelectedItem();
-        
+
         ejemplares = ed.listarEjemplaresXLibro(libro);
-        
+
         for (Ejemplar ejemplar : ejemplares) {
             jcbEjemplares.addItem(ejemplar);
         }
     }
-    
+
 }
