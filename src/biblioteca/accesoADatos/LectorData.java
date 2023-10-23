@@ -86,7 +86,38 @@ public class LectorData {
         ArrayList<Lector> lista = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM lector";
+            String sql = "SELECT * FROM lector WHERE estado = 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Lector lector = new Lector();
+
+                lector.setNroSocio(rs.getInt("nroSocio"));
+                lector.setApellido(rs.getString("apellido"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setDni(rs.getInt("dni"));
+                lector.setTelefono(rs.getInt("telefono"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(rs.getBoolean("estado"));
+
+                lista.add(lector);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+        }
+
+        return lista;
+    }
+
+    public ArrayList<Lector> listarLectoresNoActivos() {
+        ArrayList<Lector> lista = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM lector WHERE estado = 0";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -126,12 +157,14 @@ public class LectorData {
 
             if (rs.next()) {
                 lector.setNroSocio(rs.getInt("nroSocio"));
-                lector.setDni(dni);
+
                 lector.setApellido(rs.getString("apellido"));
                 lector.setNombre(rs.getString("nombre"));
                 lector.setDomicilio(rs.getString("domicilio"));
-                lector.setMail(rs.getString("mail"));
+                lector.setDni(dni);
+
                 lector.setTelefono(rs.getInt("telefono"));
+                lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el lector");
@@ -144,11 +177,12 @@ public class LectorData {
 
         return lector;
     }
-    
+
     public Lector buscarLectorId(int id) {
         Lector lector = new Lector();
+        //   LibroData ld = new LibroData();
 
-        String sql = "SELECT * FROM lector WHERE nroSocio = ?";
+        String sql = "SELECT apellido , nombre, domicilio, dni, telefono, mail, estado FROM lector WHERE nroSocio = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -176,13 +210,14 @@ public class LectorData {
 
         return lector;
     }
-    
+
     public void modificarLector(Lector lector) {
 
-        String sql = "UPDATE lector SET apellido = ?, nombre = ?, domicilio = ?, dni = ?, telefono = ?, mail = ?, estado = ? WHERE nroSocio = ? ";
-        
+        String sql = "UPDATE lector SET apellido = ?, nombre=?, domicilio=?, dni=?, telefono=?, mail=?, estado=? WHERE nroSocio=? ";
+
+        PreparedStatement ps = null;
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
 
             ps.setString(1, lector.getApellido());
             ps.setString(2, lector.getNombre());
@@ -202,25 +237,23 @@ public class LectorData {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos. " + ex.getMessage());
-            
-            //Estas verificaciones irian en la vista
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos" + ex);
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Debe completar con numeros" + ex);
         }
     }
-    
+
     public void eliminarLector(int id) {
 
-        String sql = "UPDATE lector SET estado = 0 WHERE nroSocio = ?";
+        String sql = "UPDATE lector SET estado=0 WHERE nroSocio=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
 
             int registro = ps.executeUpdate();
-            
             if (registro == 1) {
                 JOptionPane.showMessageDialog(null, "Lector Eliminado");
             } else {
@@ -229,6 +262,8 @@ public class LectorData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error base datos" + ex);
+
         }
+
     }
 }

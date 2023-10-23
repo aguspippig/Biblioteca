@@ -240,6 +240,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrNoDisponibles;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
+    
     public void cabecera(){
         
         jModelo.addColumn("ISBN");
