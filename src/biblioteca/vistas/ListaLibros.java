@@ -28,7 +28,9 @@ public class ListaLibros extends javax.swing.JInternalFrame {
     public ListaLibros() {
         initComponents();
         cabecera();
-        
+        armarCombobox();
+        jtBusqueda.setEnabled(false);
+        jcCategorias.setEnabled(false);
     }
 
     /**
@@ -49,9 +51,10 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         jrDisponibles = new javax.swing.JRadioButton();
         jrNoDisponibles = new javax.swing.JRadioButton();
         jbNuevo = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jcBuscar = new javax.swing.JCheckBox();
+        jtBusqueda = new javax.swing.JTextField();
+        jcCategorias = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -108,42 +111,54 @@ public class ListaLibros extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jLabel2.setText("Busqueda");
 
-        jLabel2.setText("Busqueda por autor");
+        jcBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcBuscarActionPerformed(evt);
+            }
+        });
+
+        jtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtBusquedaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(93, 93, 93)
                 .addComponent(jbNuevo)
-                .addGap(82, 82, 82)
+                .addGap(106, 106, 106)
                 .addComponent(jbModificar)
-                .addGap(83, 83, 83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
+                        .addComponent(jcBuscar)
+                        .addGap(28, 28, 28)
+                        .addComponent(jcCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addComponent(jtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jrDisponibles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jrNoDisponibles)
                         .addGap(110, 110, 110))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,18 +166,19 @@ public class ListaLibros extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jcBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(jtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrDisponibles)
                     .addComponent(jrNoDisponibles))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificar)
                     .addComponent(jbNuevo)
@@ -225,19 +241,116 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         biblioteca.Escritorio.moveToFront(gLibros);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
+    private void jtBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaKeyReleased
+        borrarFilas();
+        libros = ld.listarLibros();
+        String opc = jcCategorias.getModel().getSelectedItem().toString();
+        
+        if (opc.equals("Autor")){
+            for (Libro libro : libros) {
+                if(libro.getAutor().toLowerCase().startsWith(jtBusqueda.getText().toLowerCase())){                
+                    jModelo.addRow(new Object[]{
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnio(),
+                    libro.getTipo(),
+                    libro.getEditorial()});
+                }         
+            }
+        }
+        if(opc.equals("Titulo")){
+            for (Libro libro : libros) {
+                if(libro.getTitulo().toLowerCase().startsWith(jtBusqueda.getText().toLowerCase())){                
+                    jModelo.addRow(new Object[]{
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnio(),
+                    libro.getTipo(),
+                    libro.getEditorial()});
+                }         
+            }
+        }
+        if(opc.equals("Tipo")){
+            for (Libro libro : libros) {
+                if(libro.getTipo().toLowerCase().startsWith(jtBusqueda.getText().toLowerCase())){                
+                    jModelo.addRow(new Object[]{
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnio(),
+                    libro.getTipo(),
+                    libro.getEditorial()});
+                }         
+            }
+        }
+        if(opc.equals("Editorial")){
+            for (Libro libro : libros) {
+                if(libro.getEditorial().toLowerCase().startsWith(jtBusqueda.getText().toLowerCase())){                
+                    jModelo.addRow(new Object[]{
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnio(),
+                    libro.getTipo(),
+                    libro.getEditorial()});
+                }         
+            }
+        }
+        if(opc.equals("ISBN")){
+            for (Libro libro : libros) {
+                if((String.valueOf(libro.getIsbn())).startsWith(jtBusqueda.getText())){                
+                    jModelo.addRow(new Object[]{
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnio(),
+                    libro.getTipo(),
+                    libro.getEditorial()});
+                }         
+            }
+        }
+        if(opc.equals("Anio")){
+            for (Libro libro : libros) {
+                if((String.valueOf(libro.getAnio())).startsWith(jtBusqueda.getText())){                
+                    jModelo.addRow(new Object[]{
+                    libro.getIsbn(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnio(),
+                    libro.getTipo(),
+                    libro.getEditorial()});
+                }         
+            }
+        }
+    }//GEN-LAST:event_jtBusquedaKeyReleased
+
+    private void jcBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcBuscarActionPerformed
+        limpiar();
+        if (verificarCuadrado()){
+            jtBusqueda.setEnabled(true);
+            jcCategorias.setEnabled(true);
+        } else {
+            jtBusqueda.setEnabled(false);
+            jcCategorias.setEnabled(false);
+        }
+    }//GEN-LAST:event_jcBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JCheckBox jcBuscar;
+    private javax.swing.JComboBox<String> jcCategorias;
     private javax.swing.JRadioButton jrDisponibles;
     private javax.swing.JRadioButton jrNoDisponibles;
+    private javax.swing.JTextField jtBusqueda;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
     public void cabecera(){
@@ -257,4 +370,22 @@ public class ListaLibros extends javax.swing.JInternalFrame {
             jModelo.removeRow(f);
         }
     }
+    private boolean verificarCuadrado(){
+        if (jcBuscar.isSelected()){
+            return true;
+    } else return false;
+    }
+    private void limpiar(){
+        jtBusqueda.setText("");
+    }
+    private void armarCombobox(){
+     
+     jcCategorias.addItem("ISBN");
+     jcCategorias.addItem("Titulo");
+     jcCategorias.addItem("Autor");
+     jcCategorias.addItem("Anio");
+     jcCategorias.addItem("Tipo");
+     jcCategorias.addItem("Editorial");
+     }
+ 
 }
