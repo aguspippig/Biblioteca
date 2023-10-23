@@ -14,15 +14,14 @@ import javax.swing.JOptionPane;
  * @author marti
  */
 public class BuscarLector extends javax.swing.JInternalFrame {
-
-    private LectorData lectorData = new LectorData();
+    private LectorData lectorData=new LectorData();
 
     /**
      * Creates new form ListarLector
      */
     public BuscarLector() {
         initComponents();
-
+        
     }
 
     /**
@@ -92,6 +91,24 @@ public class BuscarLector extends javax.swing.JInternalFrame {
             }
         });
 
+        jtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtIdActionPerformed(evt);
+            }
+        });
+
+        jtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtDniActionPerformed(evt);
+            }
+        });
+
+        jtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtApellidoActionPerformed(evt);
+            }
+        });
+
         jrEstado.setText("ACTIVO");
 
         jbModificar.setText("MODIFICAR");
@@ -145,7 +162,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jtDni, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                                         .addComponent(jtId, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jbBuscarID, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jbBuscarDni, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -154,7 +171,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
                             .addComponent(jtDomicilio, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtTelefono, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtMail, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(201, 201, 201))
+                        .addGap(207, 207, 207))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(178, 178, 178)
                         .addComponent(jrEstado)
@@ -220,88 +237,122 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtIdActionPerformed
+
+    private void jtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtDniActionPerformed
+
+    private void jtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtApellidoActionPerformed
+
     private void jbBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarIDActionPerformed
 
-        int id = Integer.valueOf(jtId.getText());
+int id = Integer.valueOf(jtId.getText());
 
-        Lector lector = lectorData.buscarLectorId(id);
+Lector lector=lectorData.buscarLectorId(id);
 
-        jtDni.setText(lector.getDni() + "");
-        jtNombre.setText(lector.getNombre());
-        jtApellido.setText(lector.getApellido());
-        jtDomicilio.setText(lector.getDomicilio());
-        jtTelefono.setText(lector.getTelefono() + "");
-        jtMail.setText(lector.getMail());
-        jrEstado.setSelected(lector.isEstado());
+if(lector.isEstado()==false){
+    JOptionPane.showMessageDialog(null,"El lector no esta activo" );
+    
+}
+
+jtDni.setText(lector.getDni()+"");
+jtNombre.setText(lector.getNombre());
+jtApellido.setText(lector.getApellido());
+jtDomicilio.setText(lector.getDomicilio());
+jtTelefono.setText(lector.getTelefono()+"");
+jtMail.setText(lector.getMail());
+jrEstado.setSelected(lector.isEstado());
+
+
+
+
+        
     }//GEN-LAST:event_jbBuscarIDActionPerformed
 
     private void jbBuscarDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarDniActionPerformed
         int dni = Integer.valueOf(jtDni.getText());
 
-        Lector lector = lectorData.buscarLector(dni);
+Lector lector=lectorData.buscarLector(dni);
 
-        jtId.setText(lector.getNroSocio() + "");
-        jtNombre.setText(lector.getNombre());
-        jtApellido.setText(lector.getApellido());
-        jtDomicilio.setText(lector.getDomicilio());
-        jtTelefono.setText(lector.getTelefono() + "");
-        jtMail.setText(lector.getMail());
-        jrEstado.setSelected(lector.isEstado());
+if(lector.isEstado()==false){
+    JOptionPane.showMessageDialog(null,"El lector no esta activo" );
+    
+}
+
+jtId.setText(lector.getNroSocio()+"");
+jtNombre.setText(lector.getNombre());
+jtApellido.setText(lector.getApellido());
+jtDomicilio.setText(lector.getDomicilio());
+jtTelefono.setText(lector.getTelefono()+"");
+jtMail.setText(lector.getMail());
+jrEstado.setSelected(lector.isEstado());
     }//GEN-LAST:event_jbBuscarDniActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        jtId.setText("");
-        jtDni.setText("");
-        jtTelefono.setText("");
-        jtNombre.setText("");
-        jtApellido.setText("");
-        jtDomicilio.setText("");
-        jtMail.setText("");
-        jrEstado.setSelected(false);
+jtId.setText("");
+jtDni.setText("");
+    jtTelefono.setText("");
+    jtNombre.setText("");
+    jtApellido.setText("");
+    jtDomicilio.setText("");
+    jtMail.setText("");
+    jrEstado.setSelected(false);
+
+// TODO add your handling code here:
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+       
+        
+        
+            
+        try{
+        int id = Integer.valueOf(jtId.getText());
+        int dni = Integer.valueOf(jtDni.getText());
+         int telefono = Integer.valueOf(jtTelefono.getText());
+        String apellido = jtApellido.getText();
+        String nombre = jtNombre.getText();
+        String domicilio=jtDomicilio.getText();
+        
+        String mail = jtMail.getText();
+        boolean estado = jrEstado.isSelected();
+        
+              Lector lector = new Lector(id ,dni, telefono, apellido, nombre, domicilio, mail, estado);
+                lectorData.modificarLector(lector);
+               
+        }catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null,"Los campos no deben estar vacios "+ ex );
+            
+        }   catch (NumberFormatException ex){
+                        JOptionPane.showMessageDialog(null,"Ingrese numeros en los campos solicitados "+ ex );
 
-        try {
-            int id = Integer.valueOf(jtId.getText());
-            int dni = Integer.valueOf(jtDni.getText());
-            int telefono = Integer.valueOf(jtTelefono.getText());
-            String apellido = jtApellido.getText();
-            String nombre = jtNombre.getText();
-            String domicilio = jtDomicilio.getText();
-
-            String mail = jtMail.getText();
-            boolean estado = jrEstado.isSelected();
-
-            Lector lector = new Lector(id, dni, telefono, apellido, nombre, domicilio, mail, estado);
-            lectorData.modificarLector(lector);
-
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios " + ex);
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Ingrese numeros en los campos solicitados " + ex);
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-
-        int id = Integer.valueOf(jtId.getText());
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar Lector: " + jtId.getText() + "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       
+          int id = Integer.valueOf(jtId.getText());
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar Lector: " + jtId.getText() +"" + jtNombre.getText()+ "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (respuesta == JOptionPane.YES_OPTION) {
             lectorData.eliminarLector(id);
-
+       
             jtId.setText("");
-            jtDni.setText("");
-            jtTelefono.setText("");
-            jtNombre.setText("");
-            jtApellido.setText("");
-            jtDomicilio.setText("");
-            jtMail.setText("");
+jtDni.setText("");
+    jtTelefono.setText("");
+    jtNombre.setText("");
+    jtApellido.setText("");
+    jtDomicilio.setText("");
+    jtMail.setText("");
+    jrEstado.setSelected(false);
     }//GEN-LAST:event_jbEliminarActionPerformed
     }
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
