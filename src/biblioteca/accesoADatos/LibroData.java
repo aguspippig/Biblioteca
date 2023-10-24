@@ -75,7 +75,32 @@ public class LibroData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro. " + ex.getMessage());
         }
     }
+    public void modificarISBNLibro(Libro libro) {
+        try {
+            String sql = "UPDATE libro SET isbn = ? WHERE (titulo = ? AND autor = ? AND anio = ? AND tipo = ? AND editorial = ? AND estado = ?)";
 
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, libro.getIsbn());
+            ps.setString(2, libro.getTitulo());
+            ps.setString(3, libro.getAutor());
+            ps.setInt(4, libro.getAnio());
+            ps.setString(5, libro.getTipo());
+            ps.setString(6, libro.getEditorial());
+            ps.setBoolean(7, libro.isEstado());
+            
+
+            int registro = ps.executeUpdate();
+
+            if (registro == 1) {
+                JOptionPane.showMessageDialog(null, "Cargado nuevo ISBN!.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El libro no existe.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro. " + ex.getMessage());
+        }
+    }
     public void eliminarLibro(Libro libro) {
         try {
             String sql = "UPDATE libro SET estado = 0 WHERE isbn = ?";

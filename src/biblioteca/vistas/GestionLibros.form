@@ -37,14 +37,12 @@
                       <EmptySpace pref="97" max="32767" attributes="0"/>
                       <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jtISBN" max="32767" attributes="0"/>
-                      <Component id="jtTitulo" max="32767" attributes="0"/>
-                      <Component id="jtAutor" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtTipo" max="32767" attributes="0"/>
-                      <Component id="jtEditorial" pref="250" max="32767" attributes="0"/>
-                      <Component id="jtAnio" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jtISBN" max="32767" attributes="0"/>
+                  <Component id="jtTitulo" max="32767" attributes="0"/>
+                  <Component id="jtAutor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtTipo" max="32767" attributes="0"/>
+                  <Component id="jtEditorial" pref="250" max="32767" attributes="0"/>
+                  <Component id="jtAnio" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>

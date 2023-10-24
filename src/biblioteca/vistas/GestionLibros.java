@@ -162,10 +162,6 @@ public class GestionLibros extends javax.swing.JInternalFrame {
             int anio = Integer.valueOf(jtAnio.getText());
             String tipo = jtTipo.getText();
             String editorial = jtEditorial.getText();
-            if (titulo.equals("") || autor.equals("") || tipo.equals("") || editorial.equals("")) {
-                JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
-                JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
-            } else {
                 Libro libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
 
                 libroData.agregarLibro(libro);
@@ -176,10 +172,18 @@ public class GestionLibros extends javax.swing.JInternalFrame {
                 jtAnio.setText("");
                 jtTipo.setText("");
                 jtEditorial.setText("");
-            }
-        } catch (Exception e) {
+            
+        } catch (NumberFormatException e) {
+            if(jtISBN.getText().equals("") || jtAnio.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
+                JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
+            } else {
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos.");
             JOptionPane.showMessageDialog(null, "En los parametros ISBN y Año deben ingresan numeros enteros.");
+            }
+        } catch (NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
+            JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
         }
 
 

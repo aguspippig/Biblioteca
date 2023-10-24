@@ -24,6 +24,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     public ModificarLibro() {
         initComponents();
         armarCombobox();
+        jtISBN.setEnabled(false);
     }
 
     /**
@@ -52,6 +53,12 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jrEstado = new javax.swing.JRadioButton();
+        jLabel9 = new javax.swing.JLabel();
+        jtISBN = new javax.swing.JTextField();
+        jrISBN = new javax.swing.JRadioButton();
+
+        setResizable(true);
+        setPreferredSize(new java.awt.Dimension(533, 430));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -62,14 +69,14 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
 
         jcISBN.setEditable(true);
         jcISBN.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jcISBNMousePressed(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcISBNMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jcISBNMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jcISBNMousePressed(evt);
             }
         });
         jcISBN.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +127,17 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Estado");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Nuevo ISBN");
+
+        jtISBN.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jrISBN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrISBNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,56 +147,75 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(jbSalir))
-                    .addComponent(jcISBN, javax.swing.GroupLayout.Alignment.LEADING, 0, 270, Short.MAX_VALUE)
-                    .addComponent(jtTitulo, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtAutor, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtAnio, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtEditorial, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jrEstado, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(73, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbModificar)
+                                .addGap(118, 118, 118)
+                                .addComponent(jbSalir))
+                            .addComponent(jrEstado, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jrISBN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jcISBN, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtAutor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtAnio, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtTipo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtEditorial, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jcISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jcISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jrISBN)
+                            .addComponent(jtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -187,7 +224,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbModificar)
                     .addComponent(jbSalir))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(11, 11, 11))
         );
 
         pack();
@@ -217,19 +254,32 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         String tipo = jtTipo.getText();
         String editor = jtEditorial.getText();
         boolean estad = jrEstado.isSelected();
-            if (titulo.equals("") || autor.equals("") || tipo.equals("") || editor.equals("")) {
-                JOptionPane.showMessageDialog(null, "Error al ingresar los datos.");
-                JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
+            if (jrISBN.isSelected()){
+                int isbn = Integer.valueOf(jtISBN.getText());
+                Libro libro = new Libro((int)jcISBN.getModel().getSelectedItem(), titulo, autor, anio, tipo, editor, estad);
+                libroData.modificarLibro(libro);
+                jcISBN.removeItem(libro.getIsbn());
+                libro.setIsbn(isbn);
+                libroData.modificarISBNLibro(libro);
+                limpiar();
+                jcISBN.addItem(libro.getIsbn());
             } else {
                 Libro libro = new Libro((int)jcISBN.getModel().getSelectedItem(), titulo, autor, anio, tipo, editor, estad);
                 libroData.modificarLibro(libro);
                 limpiar();
             }
         } catch (NumberFormatException e) {
+            if(jtISBN.getText().equals("") || jtAnio.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
+                JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
+            } else {
             JOptionPane.showMessageDialog(null, "Error al ingresar nuevos datos.");
             JOptionPane.showMessageDialog(null, "En el campo 'Año' debe ir un numero entero.");
+            }
+        }  catch (NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
+            JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
         }
-        
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jcISBNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcISBNMouseClicked
@@ -244,6 +294,14 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jcISBNMouseEntered
 
+    private void jrISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrISBNActionPerformed
+        if(jtISBN.isEnabled()){
+            jtISBN.setEnabled(false);
+        } else {
+            jtISBN.setEnabled(true);
+        }
+    }//GEN-LAST:event_jrISBNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -254,13 +312,16 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Integer> jcISBN;
     private javax.swing.JRadioButton jrEstado;
+    private javax.swing.JRadioButton jrISBN;
     private javax.swing.JTextField jtAnio;
     private javax.swing.JTextField jtAutor;
     private javax.swing.JTextField jtEditorial;
+    private javax.swing.JTextField jtISBN;
     private javax.swing.JTextField jtTipo;
     private javax.swing.JTextField jtTitulo;
     // End of variables declaration//GEN-END:variables
@@ -273,12 +334,15 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
      }
  }
  private void limpiar(){
+     jtISBN.setText("");
+     jrISBN.setSelected(false);
      jtAnio.setText("");
      jtAutor.setText("");
      jtEditorial.setText("");
      jtTipo.setText("");
      jtTitulo.setText("");
      jrEstado.setSelected(false);
+     jtISBN.setEnabled(false);
  }
 }
 
