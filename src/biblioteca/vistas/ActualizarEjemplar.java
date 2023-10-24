@@ -8,6 +8,7 @@ import biblioteca.accesoADatos.EjemplarData;
 import biblioteca.accesoADatos.PrestamoData;
 import biblioteca.entidades.Ejemplar;
 import biblioteca.entidades.EstadoEjemplar;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -18,13 +19,18 @@ import javax.swing.JOptionPane;
 public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private EjemplarData ejData= new EjemplarData();
     private PrestamoData prData=new PrestamoData();
-    
+    private ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
     /**
      * Creates new form ActualizarEjemplar
      */
     public ActualizarEjemplar() {
         initComponents();
+        //cargarComboBoxEstado();
+        //cargarComboBoxEjemplares();
+        
+        cargarComboBoxEjemplarVacio();
         cargarComboBoxEstadoVacio();
+       
     }
 
     /**
@@ -40,9 +46,9 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jcbEstado = new javax.swing.JComboBox<>();
-        jtCod = new javax.swing.JTextField();
         jbActualiz = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
+        jcbEjemplar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setResizable(true);
@@ -53,7 +59,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         jLabel1.setText("ACTUALIZAR EJEMPLAR");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Ingrese código ");
+        jLabel2.setText("Seleccione ejemplar");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Seleccione estado ");
@@ -78,6 +84,12 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
             }
         });
 
+        jcbEjemplar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbEjemplarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,10 +101,10 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbActualiz, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbLimpiar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jcbEjemplar, javax.swing.GroupLayout.Alignment.TRAILING, 0, 350, Short.MAX_VALUE)
+                    .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(111, 111, 111))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -103,11 +115,11 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(jcbEjemplar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -115,7 +127,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbActualiz)
                     .addComponent(jbLimpiar))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,6 +136,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
         // TODO add your handling code here:
         cargarComboBoxEstado();
+        
     }//GEN-LAST:event_jcbEstadoMouseClicked
 
     private void jbActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizActionPerformed
@@ -131,19 +144,19 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
 
         try {
 
-            String strCod = jtCod.getText();
-
-            if (strCod.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Por favor, ingrese un código válido");
+            if (jcbEjemplar.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
                 return;
             }
 
-            int ejCod = Integer.parseInt(strCod);
+            Ejemplar ejCod = (Ejemplar) jcbEjemplar.getModel().getSelectedItem();
+
+            int codigo = ejCod.getCodigo();
 
             EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem();
-
+            
             Ejemplar ejActualiz = new Ejemplar();
-            ejActualiz.setCodigo(ejCod);
+            ejActualiz.setCodigo(codigo);
             ejActualiz.setEstado(estadoEj);
 
             boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
@@ -151,19 +164,25 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
             if (hayEjemplar) {
                 ejData.actualizarEjemplar(ejActualiz);
             } else {
-                JOptionPane.showMessageDialog(null, "No existe ejemplar con ese código.");
+                JOptionPane.showMessageDialog(null, "No existe ejemplar");
             }
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "El valor ingresado no es un código válido.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Se produjo un error al actualizar el ejemplar. " + e.getMessage());
         }
+
     }//GEN-LAST:event_jbActualizActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         // TODO add your handling code here:
-        jtCod.setText("");
+        cargarComboBoxEjemplarVacio();
         cargarComboBoxEstadoVacio();
     }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jcbEjemplarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEjemplarMouseClicked
+        // TODO add your handling code here:
+        cargarComboBoxEjemplares();
+    }//GEN-LAST:event_jcbEjemplarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -172,8 +191,8 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbActualiz;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JComboBox<Ejemplar> jcbEjemplar;
     private javax.swing.JComboBox<EstadoEjemplar> jcbEstado;
-    private javax.swing.JTextField jtCod;
     // End of variables declaration//GEN-END:variables
     private void cargarComboBoxEstadoVacio() {
         jcbEstado.setModel(new DefaultComboBoxModel<>());
@@ -182,6 +201,22 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private void cargarComboBoxEstado(){
         jcbEstado.setModel(new DefaultComboBoxModel<>(EstadoEjemplar.values()));
     }
+
+    private void cargarComboBoxEjemplarVacio() {
+        jcbEjemplar.setModel(new DefaultComboBoxModel<>());
+    }
+
+    private void cargarComboBoxEjemplares() {
+        jcbEjemplar.removeAllItems();
+
+        listaEjemplares = ejData.listarEjemplares();
+
+        for (int i = 0; i < listaEjemplares.size(); i++) {
+
+            jcbEjemplar.addItem(listaEjemplares.get(i));
+        }
+    }
+    
 
 }
 

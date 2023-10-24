@@ -36,10 +36,13 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
     public AgregarEjemplar() {
         initComponents();
         armarCabecera();
-        //cargarComboBoxLibro();
+        
         cargarComboBoxLibroVacio();
-        //cargarComboBoxEstado();
         cargarComboBoxEstadoVacio();
+        
+        //cargarComboBoxLibro();
+        //cargarComboBoxEstado();
+        
     }
 
     /**
@@ -80,20 +83,10 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
                 jcbLibroMouseClicked(evt);
             }
         });
-        jcbLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbLibroActionPerformed(evt);
-            }
-        });
 
         jcbEstado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcbEstadoMouseClicked(evt);
-            }
-        });
-        jcbEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbEstadoActionPerformed(evt);
             }
         });
 
@@ -170,21 +163,6 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jcbLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbLibroActionPerformed
-        // TODO add your handling code here:
-        
-        
-        Libro ejLibro=(Libro)jcbLibro.getModel().getSelectedItem();
-        
-    }//GEN-LAST:event_jcbLibroActionPerformed
-
-    private void jcbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstadoActionPerformed
-        // TODO add your handling code here:
-        
-        EstadoEjemplar estadoEj=(EstadoEjemplar)jcbEstado.getModel().getSelectedItem();
-        
-    }//GEN-LAST:event_jcbEstadoActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:

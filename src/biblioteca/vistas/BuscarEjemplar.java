@@ -179,8 +179,8 @@ public class BuscarEjemplar extends javax.swing.JInternalFrame {
         });
 
         jcbEstado2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jcbEstado2MouseReleased(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbEstado2MouseClicked(evt);
             }
         });
 
@@ -489,15 +489,15 @@ public class BuscarEjemplar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jcbEstado2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstado2MouseReleased
-        // TODO add your handling code here:
-        cargarComboBoxEstado();
-    }//GEN-LAST:event_jcbEstado2MouseReleased
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jcbEstado2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstado2MouseClicked
+        // TODO add your handling code here:
+        cargarComboBoxEstado();
+    }//GEN-LAST:event_jcbEstado2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

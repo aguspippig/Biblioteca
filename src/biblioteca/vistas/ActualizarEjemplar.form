@@ -34,10 +34,10 @@
                   <Component id="jbActualiz" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jcbEstado" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="jtCod" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jbLimpiar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbEjemplar" alignment="1" pref="350" max="32767" attributes="0"/>
+                  <Component id="jcbEstado" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
           </Group>
@@ -52,12 +52,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbEjemplar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jcbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -67,7 +67,7 @@
                   <Component id="jbActualiz" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,7 +87,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ingrese c&#xf3;digo "/>
+        <Property name="text" type="java.lang.String" value="Seleccione ejemplar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -111,8 +111,6 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;EstadoEjemplar&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtCod">
-    </Component>
     <Component class="javax.swing.JButton" name="jbActualiz">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
@@ -128,6 +126,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLimpiarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcbEjemplar">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jcbEjemplarMouseClicked"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Ejemplar&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
