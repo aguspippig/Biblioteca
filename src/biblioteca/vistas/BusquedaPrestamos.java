@@ -9,6 +9,7 @@ import biblioteca.entidades.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,10 +17,10 @@ import javax.swing.table.DefaultTableModel;
  * @author agus_
  */
 public class BusquedaPrestamos extends javax.swing.JInternalFrame {
-    
+
     private PrestamoData pd = new PrestamoData();
     private List<Prestamo> listaMaterias = new ArrayList<Prestamo>();
-    
+
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
@@ -117,21 +118,24 @@ public class BusquedaPrestamos extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         borrarFilas();
-        
-        Date fecha = jdcPrestamo.getDate();
-        
-        LocalDate fechaLocalDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        ArrayList<Prestamo> lista = pd.ejemplaresPrestadosXFecha(fechaLocalDate);
-        
-        for (Prestamo prestamo : lista) {
-            modelo.addRow(new Object[]{
-                prestamo.getEjemplar().getCodigo(),
-                prestamo.getEjemplar().getLibro().getTitulo(),
-                prestamo.getLector().getApellido(),
-                prestamo.getLector().getNombre(),
-                prestamo.isEstado(),
-            });
+
+        try {
+            Date fecha = jdcPrestamo.getDate();
+
+            LocalDate fechaLocalDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            ArrayList<Prestamo> lista = pd.ejemplaresPrestadosXFecha(fechaLocalDate);
+
+            for (Prestamo prestamo : lista) {
+                modelo.addRow(new Object[]{
+                    prestamo.getEjemplar().getCodigo(),
+                    prestamo.getEjemplar().getLibro().getTitulo(),
+                    prestamo.getLector().getApellido(),
+                    prestamo.getLector().getNombre(),
+                    prestamo.isEstado(),});
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Seleccione una fecha.");
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -153,7 +157,7 @@ public class BusquedaPrestamos extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         jtPrestamos.setModel(modelo);
     }
-    
+
     private void borrarFilas() {
         int f = jtPrestamos.getRowCount() - 1;
 
