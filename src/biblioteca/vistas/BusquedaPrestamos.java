@@ -53,7 +53,7 @@ public class BusquedaPrestamos extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTION DE PRESTAMOS");
 

@@ -89,6 +89,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         });
 
         buttonGroup1.add(jrDisponibles);
+        jrDisponibles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrDisponibles.setText("Disponibles");
         jrDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +98,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
         });
 
         buttonGroup1.add(jrNoDisponibles);
+        jrNoDisponibles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrNoDisponibles.setText("No disponibles");
         jrNoDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +113,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Busqueda");
 
         jcBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,9 +136,9 @@ public class ListaLibros extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(jbNuevo)
-                .addGap(106, 106, 106)
+                .addGap(80, 80, 80)
                 .addComponent(jbModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(jbSalir)
                 .addGap(92, 92, 92))
             .addGroup(layout.createSequentialGroup()
@@ -147,7 +150,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
                         .addComponent(jcBuscar)
                         .addGap(28, 28, 28)
                         .addComponent(jcCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -172,7 +175,7 @@ public class ListaLibros extends javax.swing.JInternalFrame {
                         .addComponent(jtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jcCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrDisponibles)
                     .addComponent(jrNoDisponibles))

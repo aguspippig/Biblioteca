@@ -52,7 +52,8 @@ public class ListadoLector extends javax.swing.JInternalFrame {
         jrAtrasados = new javax.swing.JRadioButton();
         jrLectoresNoActivos = new javax.swing.JRadioButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Listado de Lectores");
 
         jtLector.setModel(new javax.swing.table.DefaultTableModel(
@@ -68,6 +69,7 @@ public class ListadoLector extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jtLector);
 
+        jrLectorActivos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrLectorActivos.setText("Lectores Activos");
         jrLectorActivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +77,7 @@ public class ListadoLector extends javax.swing.JInternalFrame {
             }
         });
 
+        jrAtrasados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrAtrasados.setText("Lectores Atrasados");
         jrAtrasados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +85,7 @@ public class ListadoLector extends javax.swing.JInternalFrame {
             }
         });
 
+        jrLectoresNoActivos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jrLectoresNoActivos.setText("Lectores no activos");
         jrLectoresNoActivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,35 +98,32 @@ public class ListadoLector extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(80, 80, 80)
                 .addComponent(jrLectorActivos)
                 .addGap(77, 77, 77)
                 .addComponent(jrLectoresNoActivos)
                 .addGap(55, 55, 55)
                 .addComponent(jrAtrasados)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrLectorActivos)
                     .addComponent(jrLectoresNoActivos)
                     .addComponent(jrAtrasados))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
