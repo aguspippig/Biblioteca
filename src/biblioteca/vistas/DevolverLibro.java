@@ -99,7 +99,7 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
 
             armarComboBox();
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this,"No hay prestamos realizados.");
+            JOptionPane.showMessageDialog(this, "No hay prestamos realizados.");
         }
     }//GEN-LAST:event_jbDevolverActionPerformed
 
