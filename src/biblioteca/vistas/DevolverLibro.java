@@ -7,6 +7,7 @@ package biblioteca.vistas;
 import biblioteca.accesoADatos.*;
 import biblioteca.entidades.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +17,7 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
 
     private PrestamoData pd = new PrestamoData();
     private List<Prestamo> prestamos = new ArrayList<>();
-    
+
     /**
      * Creates new form DevolverLibro
      */
@@ -89,13 +90,17 @@ public class DevolverLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDevolverActionPerformed
-        Prestamo prestamo = (Prestamo) jcbPrestamos.getSelectedItem();
-        
-        pd.devolverLibro(prestamo);
-        
-        jcbPrestamos.removeAllItems();
-        
-        armarComboBox();
+        try {
+            Prestamo prestamo = (Prestamo) jcbPrestamos.getSelectedItem();
+
+            pd.devolverLibro(prestamo);
+
+            jcbPrestamos.removeAllItems();
+
+            armarComboBox();
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "No hay prestamos realizados.");
+        }
     }//GEN-LAST:event_jbDevolverActionPerformed
 
 

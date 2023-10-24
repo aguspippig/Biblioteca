@@ -52,9 +52,11 @@ public class ListadoLector extends javax.swing.JInternalFrame {
         jrAtrasados = new javax.swing.JRadioButton();
         jrLectoresNoActivos = new javax.swing.JRadioButton();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Listado de Lectores");
+        jLabel1.setText("LISTADO DE LECTORES");
 
         jtLector.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
