@@ -208,6 +208,7 @@ public class PrestarLibro extends javax.swing.JInternalFrame {
 
             jcbEjemplares.removeAllItems();
             armarComboBoxEjemplares();
+            
         } catch (NullPointerException ex) {
 
             if (jDatePrestamo.getDate() == null) {
@@ -215,7 +216,7 @@ public class PrestarLibro extends javax.swing.JInternalFrame {
             } else if (jDateDevolucion.getDate() == null) {
                 JOptionPane.showMessageDialog(this, "Ingrese una fecha de devolucion.");
             } else if (jcbEjemplares.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(this, "No hay ejeplares disponibles.");
+                JOptionPane.showMessageDialog(this, "No hay ejemplares disponibles.");
             }
         }
     }//GEN-LAST:event_jbPrestarActionPerformed

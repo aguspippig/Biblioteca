@@ -57,7 +57,7 @@ public class PrestamoData {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo. " + ex.getMessage());
             }
         } else {
-            JOptionPane.showMessageDialog(null, "El ejemplar no se encuantra diponible.");
+            JOptionPane.showMessageDialog(null, "El ejemplar no se encuentra diponible.");
         }
     }
 
