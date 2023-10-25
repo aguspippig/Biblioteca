@@ -267,8 +267,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbBuscarDniActionPerformed
 
-    
-    
+
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         jtId.setText("");
         jtDni.setText("");
@@ -305,28 +304,28 @@ public class BuscarLector extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-try{
-        int id = Integer.valueOf(jtId.getText());
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar Lector: " + jtId.getText() + "" + jtNombre.getText() + "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        try {
+            int id = Integer.valueOf(jtId.getText());
+            int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar Lector: " + jtId.getText() + "" + jtNombre.getText() + "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        if (respuesta == JOptionPane.YES_OPTION) {
-            lectorData.eliminarLector(id);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                lectorData.eliminarLector(id);
 
-            jtId.setText("");
-            jtDni.setText("");
-            jtTelefono.setText("");
-            jtNombre.setText("");
-            jtApellido.setText("");
-            jtDomicilio.setText("");
-            jtMail.setText("");
-            jrEstado.setSelected(false);
-            
-   
+                jtId.setText("");
+                jtDni.setText("");
+                jtTelefono.setText("");
+                jtNombre.setText("");
+                jtApellido.setText("");
+                jtDomicilio.setText("");
+                jtMail.setText("");
+                jrEstado.setSelected(false);
+
+
     }//GEN-LAST:event_jbEliminarActionPerformed
-          }catch (NumberFormatException ex){
-      JOptionPane.showMessageDialog(null,"Verifique los campos ingresados," + ex);
-  }    
-}
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," + ex);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
