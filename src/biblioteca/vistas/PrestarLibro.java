@@ -195,7 +195,7 @@ public class PrestarLibro extends javax.swing.JInternalFrame {
             Prestamo prestamo = new Prestamo(ldPrestamo, ldDevolucion, ejemplar, lector, true);
 
             if (diferencia <= 0) {
-                JOptionPane.showMessageDialog(this, "La fecha de devolucion debe ser anterior a la fecha de prestamo.");
+                JOptionPane.showMessageDialog(this, "La fecha de devolucion debe ser posterior a la fecha de prestamo.");
             } else {
                 pd.prestarLibro(prestamo);
             }
