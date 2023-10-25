@@ -220,45 +220,55 @@ public class BuscarLector extends javax.swing.JInternalFrame {
 
     private void jbBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarIDActionPerformed
 
-        int id = Integer.valueOf(jtId.getText());
+        try {
 
-        Lector lector = lectorData.buscarLectorId(id);
+            int id = Integer.valueOf(jtId.getText());
 
-        if (lector.isEstado() == false) {
-            JOptionPane.showMessageDialog(null, "El lector no esta activo");
+            Lector lector = lectorData.buscarLectorId(id);
 
+            if (lector.isEstado() == false) {
+                JOptionPane.showMessageDialog(null, "El lector no esta activo");
+
+            }
+
+            jtDni.setText(lector.getDni() + "");
+            jtNombre.setText(lector.getNombre());
+            jtApellido.setText(lector.getApellido());
+            jtDomicilio.setText(lector.getDomicilio());
+            jtTelefono.setText(lector.getTelefono() + "");
+            jtMail.setText(lector.getMail());
+            jrEstado.setSelected(lector.isEstado());
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," + ex);
         }
-
-        jtDni.setText(lector.getDni() + "");
-        jtNombre.setText(lector.getNombre());
-        jtApellido.setText(lector.getApellido());
-        jtDomicilio.setText(lector.getDomicilio());
-        jtTelefono.setText(lector.getTelefono() + "");
-        jtMail.setText(lector.getMail());
-        jrEstado.setSelected(lector.isEstado());
-
-
     }//GEN-LAST:event_jbBuscarIDActionPerformed
 
     private void jbBuscarDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarDniActionPerformed
-        int dni = Integer.valueOf(jtDni.getText());
+        try {
+            int dni = Integer.valueOf(jtDni.getText());
 
-        Lector lector = lectorData.buscarLector(dni);
+            Lector lector = lectorData.buscarLector(dni);
 
-        if (lector.isEstado() == false) {
-            JOptionPane.showMessageDialog(null, "El lector no esta activo");
+            if (lector.isEstado() == false) {
+                JOptionPane.showMessageDialog(null, "El lector no esta activo");
 
+            }
+
+            jtId.setText(lector.getNroSocio() + "");
+            jtNombre.setText(lector.getNombre());
+            jtApellido.setText(lector.getApellido());
+            jtDomicilio.setText(lector.getDomicilio());
+            jtTelefono.setText(lector.getTelefono() + "");
+            jtMail.setText(lector.getMail());
+            jrEstado.setSelected(lector.isEstado());
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," + ex);
         }
-
-        jtId.setText(lector.getNroSocio() + "");
-        jtNombre.setText(lector.getNombre());
-        jtApellido.setText(lector.getApellido());
-        jtDomicilio.setText(lector.getDomicilio());
-        jtTelefono.setText(lector.getTelefono() + "");
-        jtMail.setText(lector.getMail());
-        jrEstado.setSelected(lector.isEstado());
     }//GEN-LAST:event_jbBuscarDniActionPerformed
 
+    
+    
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         jtId.setText("");
         jtDni.setText("");
