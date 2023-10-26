@@ -8,6 +8,7 @@ import biblioteca.accesoADatos.EjemplarData;
 import biblioteca.accesoADatos.PrestamoData;
 import biblioteca.entidades.Ejemplar;
 import biblioteca.entidades.EstadoEjemplar;
+import static biblioteca.vistas.biblioteca.Escritorio;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -49,6 +50,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         jbActualiz = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
         jcbEjemplar = new javax.swing.JComboBox<>();
+        jbRetrasos = new javax.swing.JButton();
 
         setClosable(true);
         setResizable(true);
@@ -90,6 +92,13 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
             }
         });
 
+        jbRetrasos.setText("Listar Retrasos");
+        jbRetrasos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRetrasosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,7 +111,11 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                     .addComponent(jbActualiz, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jbRetrasos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbLimpiar))
                     .addComponent(jcbEjemplar, javax.swing.GroupLayout.Alignment.TRAILING, 0, 350, Short.MAX_VALUE)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(111, 111, 111))
@@ -126,7 +139,8 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbActualiz)
-                    .addComponent(jbLimpiar))
+                    .addComponent(jbLimpiar)
+                    .addComponent(jbRetrasos))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
 
@@ -141,81 +155,17 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
 
     private void jbActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizActionPerformed
         // TODO add your handling code here:
-        try {
 
-//            if (jcbEjemplar.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
-//                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
-//                return;
-//            }
-//
+        try {
             Ejemplar ejCod = (Ejemplar) jcbEjemplar.getModel().getSelectedItem(); //ejemplar del q se extrae el estado actual
 
             int codigo = ejCod.getCodigo();
 
             EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem(); //estado al q se kiere actualizar
-//
-//            if (ejCod.getEstado() == EstadoEjemplar.PRESTADO || ejCod.getEstado() == EstadoEjemplar.RETRASO) {
-//                //no se puede actualizar por ejemplar no devuelto
-//                JOptionPane.showMessageDialog(null, "no se puede actualizar por ejemplar no devuelto");
-//
-//            } else if (ejCod.getEstado() == EstadoEjemplar.DISPONIBLE || ejCod.getEstado() == EstadoEjemplar.NO_DISPONIBLE || ejCod.getEstado() == EstadoEjemplar.REPARACION) {
-//
-//                if (ejCod.getEstado() == EstadoEjemplar.DISPONIBLE) {
-//                    if (estadoEj == EstadoEjemplar.REPARACION || estadoEj == EstadoEjemplar.NO_DISPONIBLE) {
-//                        Ejemplar ejActualiz = new Ejemplar(); //objeto que actualiza el estado del ejemplar
-//                        ejActualiz.setCodigo(codigo);
-//                        ejActualiz.setEstado(estadoEj);
-//
-//                        boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
-//
-//                        if (hayEjemplar) {
-//                            ejData.actualizarEjemplar(ejActualiz);
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "No existe ejemplar");
-//                        }
-//                    }
-//
-//                    if (estadoEj == EstadoEjemplar.REPARACION) {
-//                        if (estadoEj == EstadoEjemplar.DISPONIBLE || estadoEj == EstadoEjemplar.NO_DISPONIBLE) {
-//                            Ejemplar ejActualiz = new Ejemplar(); //objeto que actualiza el estado del ejemplar
-//                            ejActualiz.setCodigo(codigo);
-//                            ejActualiz.setEstado(estadoEj);
-//
-//                            boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
-//
-//                            if (hayEjemplar) {
-//                                ejData.actualizarEjemplar(ejActualiz);
-//                            } else {
-//                                JOptionPane.showMessageDialog(null, "No existe ejemplar");
-//                            }
-//                        }
-//                    }
-//
-//                    if (estadoEj == EstadoEjemplar.NO_DISPONIBLE) {
-//                        if (estadoEj == EstadoEjemplar.DISPONIBLE || estadoEj == EstadoEjemplar.REPARACION) {
-//                            Ejemplar ejActualiz = new Ejemplar(); //objeto que actualiza el estado del ejemplar
-//                            ejActualiz.setCodigo(codigo);
-//                            ejActualiz.setEstado(estadoEj);
-//
-//                            boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
-//
-//                            if (hayEjemplar) {
-//                                ejData.actualizarEjemplar(ejActualiz);
-//                            } else {
-//                                JOptionPane.showMessageDialog(null, "No existe ejemplar");
-//                            }
-//                        }
-//
-//                    }
-//
-//                } else if (estadoEj == EstadoEjemplar.PRESTADO || estadoEj == EstadoEjemplar.RETRASO) {
-//                    JOptionPane.showMessageDialog(null, "no se puede realizar la actualizacion, vaya a prestar");
-//
-//                }
-//
-//            }
+            
             if (ejCod.getEstado() == EstadoEjemplar.PRESTADO || ejCod.getEstado() == EstadoEjemplar.RETRASO) {
                 JOptionPane.showMessageDialog(null, "No se puede actualizar, ejemplar no devuelto.");
+                
             } else {
                 if ((ejCod.getEstado() == EstadoEjemplar.DISPONIBLE)
                         && (estadoEj == EstadoEjemplar.REPARACION || estadoEj == EstadoEjemplar.NO_DISPONIBLE)) {
@@ -230,8 +180,8 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Ejemplar no prestado");//ejemplar no prestado
                 }
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Se produjo un error al actualizar el ejemplar. " + e.getMessage());
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un item. " + e.getMessage());
         }
 
     }//GEN-LAST:event_jbActualizActionPerformed
@@ -247,6 +197,14 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         cargarComboBoxEjemplares();
     }//GEN-LAST:event_jcbEjemplarMouseClicked
 
+    private void jbRetrasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRetrasosActionPerformed
+        
+        PrestamosAtrasados pa = new PrestamosAtrasados();
+        pa.setVisible(true);
+        Escritorio.add(pa);
+        Escritorio.moveToFront(pa);
+    }//GEN-LAST:event_jbRetrasosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -254,6 +212,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbActualiz;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JButton jbRetrasos;
     private javax.swing.JComboBox<Ejemplar> jcbEjemplar;
     private javax.swing.JComboBox<EstadoEjemplar> jcbEstado;
     // End of variables declaration//GEN-END:variables

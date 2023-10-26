@@ -154,7 +154,7 @@ public class PrestamoData {
 
         return false;
     }
-    
+
     public ArrayList<Prestamo> ejemplaresPrestadosXFecha(LocalDate fechaPrestamo) {
         ArrayList<Prestamo> listaPrestamos = new ArrayList<>();
         EjemplarData ed = new EjemplarData();
@@ -171,7 +171,7 @@ public class PrestamoData {
 
             while (rs.next()) {
                 Prestamo prestamo = new Prestamo();
-                
+
                 prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
                 prestamo.setFechaPrestamo(rs.getDate("fechaPrestamo").toLocalDate());
                 prestamo.setFechaDevoluc(rs.getDate("fechaDevoluc").toLocalDate());
@@ -187,7 +187,7 @@ public class PrestamoData {
 
         return listaPrestamos;
     }
-    
+
     public ArrayList<Prestamo> listarPrestamosActivos() {
         ArrayList<Prestamo> lista = new ArrayList<>();
         EjemplarData ed = new EjemplarData();
@@ -202,7 +202,7 @@ public class PrestamoData {
 
             while (rs.next()) {
                 Prestamo prestamo = new Prestamo();
-                
+
                 Date fechaPrestamo = rs.getDate("fechaPrestamo");
                 Date fechaDevoluc = rs.getDate("fechaDevoluc");
 
@@ -212,13 +212,81 @@ public class PrestamoData {
                 prestamo.setEjemplar(ed.buscarEjemplar(rs.getInt("ejemplar")));
                 prestamo.setLector(ld.buscarLector(rs.getInt("dni")));
                 prestamo.setEstado(rs.getBoolean("prestamo.estado"));
-                
+
                 lista.add(prestamo);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro." + ex.getMessage());
         }
-        
+
         return lista;
+    }
+
+    public void prestamoAtrasado(Prestamo prestamo) {
+        try {
+            if (verificarAtraso(prestamo)) {
+                String sql = "UPDATE ejemplar SET estado = 'RETRASO' WHERE codigo = ?";
+
+                PreparedStatement ps = con.prepareStatement(sql);
+
+                ps.setInt(1, prestamo.getEjemplar().getCodigo());
+
+                int registro = ps.executeUpdate();
+
+                /*if (registro == 1) {
+                    JOptionPane.showMessageDialog(null, "Se registro correctamente.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "EROOR!");
+                }*/
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo." + ex.getMessage());
+        }
+    }
+
+    public ArrayList<Prestamo> listarPrestamosAtrasados() {
+        ArrayList<Prestamo> lista = new ArrayList<>();
+        EjemplarData ed = new EjemplarData();
+        LectorData ld = new LectorData();
+
+        try {
+            String sql = "SELECT * FROM prestamo JOIN lector ON (lector = nroSocio) WHERE TIMESTAMPDIFF (day,fechaDevoluc,CURRENT_DATE) > 0 AND prestamo.estado = 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Prestamo prestamo = new Prestamo();
+
+                Date fechaPrestamo = rs.getDate("fechaPrestamo");
+                Date fechaDevoluc = rs.getDate("fechaDevoluc");
+
+                prestamo.setIdPrestamo(rs.getInt("idPrestamo"));
+                prestamo.setFechaPrestamo(fechaPrestamo.toLocalDate());
+                prestamo.setFechaDevoluc(fechaDevoluc.toLocalDate());
+                prestamo.setEjemplar(ed.buscarEjemplar(rs.getInt("ejemplar")));
+                prestamo.setLector(ld.buscarLector(rs.getInt("dni")));
+                prestamo.setEstado(rs.getBoolean("prestamo.estado"));
+
+                lista.add(prestamo);
+                prestamoAtrasado(prestamo);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla prestamo." + ex.getMessage());
+        }
+
+        return lista;
+    }
+
+    public boolean verificarAtraso(Prestamo prestamo) {
+        LocalDate hoy = LocalDate.now();
+        LocalDate devolucion = prestamo.getFechaDevoluc();
+
+        if (hoy.compareTo(devolucion) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -44,6 +44,7 @@ public class biblioteca extends javax.swing.JFrame {
         jmPrestarLibro = new javax.swing.JMenuItem();
         jmDevolverLibro = new javax.swing.JMenuItem();
         jmGestionPrestamos = new javax.swing.JMenuItem();
+        jmPrestAtrasados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,6 +168,14 @@ public class biblioteca extends javax.swing.JFrame {
             }
         });
         jmPrestamo.add(jmGestionPrestamos);
+
+        jmPrestAtrasados.setText("Prestamos Atrasados");
+        jmPrestAtrasados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPrestAtrasadosActionPerformed(evt);
+            }
+        });
+        jmPrestamo.add(jmPrestAtrasados);
 
         jMenuBar1.add(jmPrestamo);
 
@@ -298,6 +307,15 @@ public class biblioteca extends javax.swing.JFrame {
         Escritorio.moveToFront(gLectores);
     }//GEN-LAST:event_jmGestionLectoresActionPerformed
 
+    private void jmPrestAtrasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPrestAtrasadosActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        PrestamosAtrasados pa = new PrestamosAtrasados();
+        pa.setVisible(true);
+        Escritorio.add(pa);
+        Escritorio.moveToFront(pa);
+    }//GEN-LAST:event_jmPrestAtrasadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,6 +368,7 @@ public class biblioteca extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmListadoLector;
     private javax.swing.JMenuItem jmListarLibros;
     private javax.swing.JMenuItem jmListor;
+    private javax.swing.JMenuItem jmPrestAtrasados;
     private javax.swing.JMenu jmPrestamo;
     private javax.swing.JMenuItem jmPrestarLibro;
     // End of variables declaration//GEN-END:variables

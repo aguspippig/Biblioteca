@@ -226,10 +226,6 @@ public class BuscarLector extends javax.swing.JInternalFrame {
 
             Lector lector = lectorData.buscarLectorId(id);
 
-         
-
-            
-
             jtDni.setText(lector.getDni() + "");
             jtNombre.setText(lector.getNombre());
             jtApellido.setText(lector.getApellido());
@@ -239,7 +235,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
             jrEstado.setSelected(lector.isEstado());
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," );
+            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados." );
         }
     }//GEN-LAST:event_jbBuscarIDActionPerformed
 
@@ -249,8 +245,6 @@ public class BuscarLector extends javax.swing.JInternalFrame {
 
             Lector lector = lectorData.buscarLector(dni);
 
-           
-
             jtId.setText(lector.getNroSocio() + "");
             jtNombre.setText(lector.getNombre());
             jtApellido.setText(lector.getApellido());
@@ -259,7 +253,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
             jtMail.setText(lector.getMail());
             jrEstado.setSelected(lector.isEstado());
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," );
+            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados." );
         }
     }//GEN-LAST:event_jbBuscarDniActionPerformed
 
@@ -292,10 +286,10 @@ public class BuscarLector extends javax.swing.JInternalFrame {
             lectorData.modificarLector(lector);
 
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios " );
+            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios." );
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Ingrese numeros en los campos solicitados " );
+            JOptionPane.showMessageDialog(null, "Ingrese numeros en los campos solicitados." );
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
@@ -319,7 +313,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbEliminarActionPerformed
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," + ex);
+            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados.");
         }
     }
 

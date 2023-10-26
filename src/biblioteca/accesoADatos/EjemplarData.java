@@ -45,11 +45,11 @@ public class EjemplarData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar." + ex.getMessage());
         }
     }
-    
+
     public Ejemplar buscarEjemplar(int codigo) {
         Ejemplar ejemplar = new Ejemplar();
         LibroData ld = new LibroData();
-        
+
         String sql = "SELECT * FROM ejemplar WHERE codigo = ?";
 
         try {
@@ -71,14 +71,14 @@ public class EjemplarData {
 
         return ejemplar;
     }
-    
+
     public void actualizarEjemplar(Ejemplar ejemplar) {
-        
+
         try {
             String sql = "UPDATE ejemplar SET estado = ? WHERE codigo = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setString(1, ejemplar.getEstado().toString());
             ps.setInt(2, ejemplar.getCodigo());
 
@@ -94,7 +94,7 @@ public class EjemplarData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar. " + ex.getMessage());
         }
     }
-    
+
     public ArrayList<Ejemplar> listarEjemplaresXLector(Lector lector) {
         ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
 
@@ -126,7 +126,7 @@ public class EjemplarData {
 
         return listaEjemplares;
     }
-    
+
     public ArrayList<Ejemplar> listarEjemplares() {
         ArrayList<Ejemplar> lista = new ArrayList<>();
         LibroData ld = new LibroData();
@@ -153,7 +153,7 @@ public class EjemplarData {
 
         return lista;
     }
-    
+
     public ArrayList<Ejemplar> listarEjemplaresXLibro(Libro libro) {
         ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
 
@@ -168,7 +168,7 @@ public class EjemplarData {
 
             while (rs.next()) {
                 Ejemplar ejemplar = new Ejemplar();
-                
+
                 ejemplar.setCodigo(rs.getInt("codigo"));
                 ejemplar.setLibro(libro);
                 ejemplar.setEstado(EstadoEjemplar.valueOf(rs.getString("estado")));
@@ -180,5 +180,32 @@ public class EjemplarData {
         }
 
         return listaEjemplares;
+    }
+    
+    public ArrayList<Ejemplar> listarEjemplaresAtrasados() {
+        ArrayList<Ejemplar> lista = new ArrayList<>();
+        LibroData ld = new LibroData();
+
+        try {
+            String sql = "SELECT * FROM ejemplar JOIN prestamo ON (codigo = ejemplar) WHERE TIMESTAMPDIFF (day,fechaDevoluc,CURRENT_DATE) > 0 AND prestamo.estado = 1";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Ejemplar ejemplar = new Ejemplar();
+
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                ejemplar.setLibro(ld.buscarLibroXIsbn(rs.getInt("libro")));
+                ejemplar.setEstado(EstadoEjemplar.valueOf(rs.getString("estado")));
+
+                lista.add(ejemplar);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ejemplar." + ex.getMessage());
+        }
+
+        return lista;
     }
 }
