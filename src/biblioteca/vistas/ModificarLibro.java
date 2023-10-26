@@ -274,7 +274,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Verifique que todos los parametros tienen datos.");
             } else {
             JOptionPane.showMessageDialog(null, "Error al ingresar nuevos datos.");
-            JOptionPane.showMessageDialog(null, "En el campo 'Año' debe ir un numero entero.");
+            JOptionPane.showMessageDialog(null, "En el campo 'Nuevo ISBN' y 'Año' deben ir numeros enteros.");
             }
         }  catch (NullPointerException e){
             JOptionPane.showMessageDialog(null, "Error al ingresar los datos");
