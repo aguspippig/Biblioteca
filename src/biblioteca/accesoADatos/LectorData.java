@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author Florencia
  */
 public class LectorData {
+     boolean verificar=false;
 
     private Connection con = null;
 
@@ -47,7 +48,7 @@ public class LectorData {
                 JOptionPane.showMessageDialog(null, "Error!");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." );
         }
     }
 
@@ -76,7 +77,7 @@ public class LectorData {
                 lista.add(lector);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." );
         }
 
         return lista;
@@ -107,7 +108,7 @@ public class LectorData {
                 lista.add(lector);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." );
         }
 
         return lista;
@@ -138,13 +139,15 @@ public class LectorData {
                 lista.add(lector);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector." );
         }
 
         return lista;
     }
 
     public Lector buscarLector(int dni) {
+      
+        boolean verificar=false;
         Lector lector = new Lector();
 
         String sql = "SELECT * FROM lector WHERE dni = ?";
@@ -168,21 +171,28 @@ public class LectorData {
                 lector.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el lector");
+                verificar=true;
+            }
+             if(lector.isEstado()==false && verificar == false){
+                JOptionPane.showMessageDialog(null,"El lector no esta activo ");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector. " );
         }
 
         return lector;
     }
 
     public Lector buscarLectorId(int id) {
+        boolean verificar = false;
         Lector lector = new Lector();
-        //   LibroData ld = new LibroData();
+        
 
         String sql = "SELECT apellido , nombre, domicilio, dni, telefono, mail, estado FROM lector WHERE nroSocio = ?";
+        
+     
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -201,11 +211,15 @@ public class LectorData {
                 lector.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el lector");
+                   verificar = true;
+            }
+            if(lector.isEstado()==false && verificar == false){
+                JOptionPane.showMessageDialog(null,"El lector no esta activo ");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla lector. " );
         }
 
         return lector;
@@ -236,12 +250,12 @@ public class LectorData {
                 JOptionPane.showMessageDialog(null, "El Lector no existe.");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos. " );
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Debe completar todos los campos" + ex);
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos" );
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Debe completar con numeros" + ex);
+            JOptionPane.showMessageDialog(null, "Debe completar con numeros" );
         }
     }
 
@@ -261,7 +275,7 @@ public class LectorData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error base datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error base datos" );
 
         }
 
