@@ -141,32 +141,95 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
 
     private void jbActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizActionPerformed
         // TODO add your handling code here:
-
         try {
 
-            if (jcbEjemplar.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
-                return;
-            }
-
-            Ejemplar ejCod = (Ejemplar) jcbEjemplar.getModel().getSelectedItem();
+//            if (jcbEjemplar.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+//                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
+//                return;
+//            }
+//
+            Ejemplar ejCod = (Ejemplar) jcbEjemplar.getModel().getSelectedItem(); //ejemplar del q se extrae el estado actual
 
             int codigo = ejCod.getCodigo();
 
-            EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem();
-            
-            Ejemplar ejActualiz = new Ejemplar();
-            ejActualiz.setCodigo(codigo);
-            ejActualiz.setEstado(estadoEj);
-
-            boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
-
-            if (hayEjemplar) {
-                ejData.actualizarEjemplar(ejActualiz);
+            EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem(); //estado al q se kiere actualizar
+//
+//            if (ejCod.getEstado() == EstadoEjemplar.PRESTADO || ejCod.getEstado() == EstadoEjemplar.RETRASO) {
+//                //no se puede actualizar por ejemplar no devuelto
+//                JOptionPane.showMessageDialog(null, "no se puede actualizar por ejemplar no devuelto");
+//
+//            } else if (ejCod.getEstado() == EstadoEjemplar.DISPONIBLE || ejCod.getEstado() == EstadoEjemplar.NO_DISPONIBLE || ejCod.getEstado() == EstadoEjemplar.REPARACION) {
+//
+//                if (ejCod.getEstado() == EstadoEjemplar.DISPONIBLE) {
+//                    if (estadoEj == EstadoEjemplar.REPARACION || estadoEj == EstadoEjemplar.NO_DISPONIBLE) {
+//                        Ejemplar ejActualiz = new Ejemplar(); //objeto que actualiza el estado del ejemplar
+//                        ejActualiz.setCodigo(codigo);
+//                        ejActualiz.setEstado(estadoEj);
+//
+//                        boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
+//
+//                        if (hayEjemplar) {
+//                            ejData.actualizarEjemplar(ejActualiz);
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "No existe ejemplar");
+//                        }
+//                    }
+//
+//                    if (estadoEj == EstadoEjemplar.REPARACION) {
+//                        if (estadoEj == EstadoEjemplar.DISPONIBLE || estadoEj == EstadoEjemplar.NO_DISPONIBLE) {
+//                            Ejemplar ejActualiz = new Ejemplar(); //objeto que actualiza el estado del ejemplar
+//                            ejActualiz.setCodigo(codigo);
+//                            ejActualiz.setEstado(estadoEj);
+//
+//                            boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
+//
+//                            if (hayEjemplar) {
+//                                ejData.actualizarEjemplar(ejActualiz);
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "No existe ejemplar");
+//                            }
+//                        }
+//                    }
+//
+//                    if (estadoEj == EstadoEjemplar.NO_DISPONIBLE) {
+//                        if (estadoEj == EstadoEjemplar.DISPONIBLE || estadoEj == EstadoEjemplar.REPARACION) {
+//                            Ejemplar ejActualiz = new Ejemplar(); //objeto que actualiza el estado del ejemplar
+//                            ejActualiz.setCodigo(codigo);
+//                            ejActualiz.setEstado(estadoEj);
+//
+//                            boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
+//
+//                            if (hayEjemplar) {
+//                                ejData.actualizarEjemplar(ejActualiz);
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "No existe ejemplar");
+//                            }
+//                        }
+//
+//                    }
+//
+//                } else if (estadoEj == EstadoEjemplar.PRESTADO || estadoEj == EstadoEjemplar.RETRASO) {
+//                    JOptionPane.showMessageDialog(null, "no se puede realizar la actualizacion, vaya a prestar");
+//
+//                }
+//
+//            }
+            if (ejCod.getEstado() == EstadoEjemplar.PRESTADO || ejCod.getEstado() == EstadoEjemplar.RETRASO) {
+                JOptionPane.showMessageDialog(null, "No se puede actualizar, ejemplar no devuelto.");
             } else {
-                JOptionPane.showMessageDialog(null, "No existe ejemplar");
+                if ((ejCod.getEstado() == EstadoEjemplar.DISPONIBLE)
+                        && (estadoEj == EstadoEjemplar.REPARACION || estadoEj == EstadoEjemplar.NO_DISPONIBLE)) {
+                    actualizarEstadoEjemplar(codigo, estadoEj);
+                } else if ((ejCod.getEstado() == EstadoEjemplar.REPARACION)
+                        && (estadoEj == EstadoEjemplar.DISPONIBLE || estadoEj == EstadoEjemplar.NO_DISPONIBLE)) {
+                    actualizarEstadoEjemplar(codigo, estadoEj);
+                } else if ((ejCod.getEstado() == EstadoEjemplar.NO_DISPONIBLE)
+                        && (estadoEj == EstadoEjemplar.DISPONIBLE || estadoEj == EstadoEjemplar.REPARACION)) {
+                    actualizarEstadoEjemplar(codigo, estadoEj);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ejemplar no prestado");//ejemplar no prestado
+                }
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Se produjo un error al actualizar el ejemplar. " + e.getMessage());
         }
@@ -217,6 +280,18 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         }
     }
     
+    private void actualizarEstadoEjemplar(int codigo, EstadoEjemplar estado) {
+        Ejemplar ejActualiz = new Ejemplar();
+        ejActualiz.setCodigo(codigo);
+        ejActualiz.setEstado(estado);
 
+        boolean hayEjemplar = prData.verifEjemplar(ejActualiz);
+
+        if (hayEjemplar) {
+            ejData.actualizarEjemplar(ejActualiz);
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe ejemplar.");
+        }
+    }
 }
 
