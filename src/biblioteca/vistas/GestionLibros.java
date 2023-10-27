@@ -48,6 +48,9 @@ public class GestionLibros extends javax.swing.JInternalFrame {
         jbAniadir = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
 
+        setResizable(true);
+        setPreferredSize(new java.awt.Dimension(516, 450));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("AGREGAR LIBRO");
@@ -104,13 +107,12 @@ public class GestionLibros extends javax.swing.JInternalFrame {
                         .addComponent(jbAniadir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(jbSalir))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jtISBN)
-                        .addComponent(jtTitulo)
-                        .addComponent(jtAutor)
-                        .addComponent(jtTipo)
-                        .addComponent(jtEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                        .addComponent(jtAnio)))
+                    .addComponent(jtISBN)
+                    .addComponent(jtTitulo)
+                    .addComponent(jtAutor)
+                    .addComponent(jtTipo)
+                    .addComponent(jtEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(jtAnio))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -142,11 +144,11 @@ public class GestionLibros extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbAniadir)
                     .addComponent(jbSalir))
-                .addGap(28, 28, 28))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();

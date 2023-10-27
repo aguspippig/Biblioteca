@@ -65,7 +65,7 @@ public class PrestamosAtrasados extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,14 +92,15 @@ public class PrestamosAtrasados extends javax.swing.JInternalFrame {
     private void armarTabla() {
         borrarFilas();
 
-        ArrayList<Prestamo> prestamos = pd.listarPrestamosAtrasados();
-        ArrayList<Lector> lectores = ld.listaDeAtrasos();
+        ArrayList<Prestamo> prestamos = pd.listarPrestamosAtrasados(); 
 
         for (Prestamo prestamo : prestamos) {
             modelo.addRow(new Object[]{
                 prestamo.getIdPrestamo(),
                 prestamo.getLector().getNroSocio(),
                 prestamo.getLector().getApellido() + " " + prestamo.getLector().getNombre(),
+                prestamo.getEjemplar().getCodigo(),
+                prestamo.getEjemplar().getLibro().getTitulo(),
                 prestamo.getFechaPrestamo(),
                 prestamo.getFechaDevoluc(),});
         }
@@ -110,6 +111,8 @@ public class PrestamosAtrasados extends javax.swing.JInternalFrame {
         modelo.addColumn("ID");
         modelo.addColumn("Nro de Socio");
         modelo.addColumn("Apellido y Nombre");
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Ejemplar");
         modelo.addColumn("Fecha de prestamo");
         modelo.addColumn("Fecha de devolucion");
         //modelo.addColumn("Estado");
