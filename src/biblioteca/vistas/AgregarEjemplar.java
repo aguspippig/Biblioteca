@@ -86,6 +86,12 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
             }
         });
 
+        jcbEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbEstadoMouseClicked(evt);
+            }
+        });
+
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +237,10 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         cargarComboBoxLibroVacio();
         cargarComboBoxEstadoVacio();
     }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
+        cargarComboBoxEstado();
+    }//GEN-LAST:event_jcbEstadoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,9 +18,11 @@ import javax.swing.JOptionPane;
  * @author agus_
  */
 public class ActualizarEjemplar extends javax.swing.JInternalFrame {
-    private EjemplarData ejData= new EjemplarData();
-    private PrestamoData prData=new PrestamoData();
+
+    private EjemplarData ejData = new EjemplarData();
+    private PrestamoData prData = new PrestamoData();
     private ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
+
     /**
      * Creates new form ActualizarEjemplar
      */
@@ -28,10 +30,10 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         initComponents();
         //cargarComboBoxEstado();
         //cargarComboBoxEjemplares();
-        
+
         cargarComboBoxEjemplarVacio();
         cargarComboBoxEstadoVacio();
-       
+
     }
 
     /**
@@ -150,22 +152,28 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
         // TODO add your handling code here:
         cargarComboBoxEstado();
-        
+
     }//GEN-LAST:event_jcbEstadoMouseClicked
 
     private void jbActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizActionPerformed
         // TODO add your handling code here:
 
         try {
+
+            if (jcbEjemplar.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
+                return;
+            }
+
             Ejemplar ejCod = (Ejemplar) jcbEjemplar.getModel().getSelectedItem(); //ejemplar del q se extrae el estado actual
 
             int codigo = ejCod.getCodigo();
 
             EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem(); //estado al q se kiere actualizar
-            
+
             if (ejCod.getEstado() == EstadoEjemplar.PRESTADO || ejCod.getEstado() == EstadoEjemplar.RETRASO) {
                 JOptionPane.showMessageDialog(null, "No se puede actualizar, ejemplar no devuelto.");
-                
+
             } else {
                 if ((ejCod.getEstado() == EstadoEjemplar.DISPONIBLE)
                         && (estadoEj == EstadoEjemplar.REPARACION || estadoEj == EstadoEjemplar.NO_DISPONIBLE)) {
@@ -181,7 +189,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                 }
             }
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Seleccione un item. " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Seleccione un item.");
         }
 
     }//GEN-LAST:event_jbActualizActionPerformed
@@ -198,7 +206,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbEjemplarMouseClicked
 
     private void jbRetrasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRetrasosActionPerformed
-        
+
         PrestamosAtrasados pa = new PrestamosAtrasados();
         pa.setVisible(true);
         Escritorio.add(pa);
@@ -219,8 +227,8 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private void cargarComboBoxEstadoVacio() {
         jcbEstado.setModel(new DefaultComboBoxModel<>());
     }
-    
-    private void cargarComboBoxEstado(){
+
+    private void cargarComboBoxEstado() {
         jcbEstado.setModel(new DefaultComboBoxModel<>(EstadoEjemplar.values()));
     }
 
@@ -238,7 +246,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
             jcbEjemplar.addItem(listaEjemplares.get(i));
         }
     }
-    
+
     private void actualizarEstadoEjemplar(int codigo, EstadoEjemplar estado) {
         Ejemplar ejActualiz = new Ejemplar();
         ejActualiz.setCodigo(codigo);
@@ -253,4 +261,3 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         }
     }
 }
-
