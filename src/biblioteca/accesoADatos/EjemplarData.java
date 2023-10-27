@@ -37,7 +37,6 @@ public class EjemplarData {
 
             if (rs.next()) {
                 ejemplar.setCodigo(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Ejemplar añadido correctamente.");
             } else {
                 JOptionPane.showMessageDialog(null, "Error!");
             }
@@ -132,7 +131,7 @@ public class EjemplarData {
         LibroData ld = new LibroData();
 
         try {
-            String sql = "SELECT * FROM ejemplar";
+            String sql = "SELECT * FROM ejemplar JOIN libro ON (libro = isbn) ORDER BY libro.titulo";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
