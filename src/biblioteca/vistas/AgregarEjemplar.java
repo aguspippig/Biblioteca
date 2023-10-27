@@ -21,28 +21,28 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
-        private LibroData libroData= new LibroData();
-        private EjemplarData ejData= new EjemplarData();
-        private ArrayList<Libro> listaLibros = new ArrayList<>();
-        private ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
-        private DefaultTableModel jtEjemplarModelo = new DefaultTableModel() {
+    private LibroData libroData = new LibroData();
+    private EjemplarData ejData = new EjemplarData();
+    private ArrayList<Libro> listaLibros = new ArrayList<>();
+    private ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
+    private DefaultTableModel jtEjemplarModelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
+
     /**
      * Creates new form ListaEjemplares
      */
     public AgregarEjemplar() {
         initComponents();
         armarCabecera();
-        
-        cargarComboBoxLibroVacio();
-        cargarComboBoxEstadoVacio();
-        
-        //cargarComboBoxLibro();
-        //cargarComboBoxEstado();
-        
+
+        //cargarComboBoxLibroVacio();
+        //cargarComboBoxEstadoVacio();
+
+        cargarComboBoxLibro();
+        cargarComboBoxEstado();
     }
 
     /**
@@ -63,6 +63,8 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         jbLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtEj = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jtCantidad = new javax.swing.JTextField();
 
         setClosable(true);
         setResizable(true);
@@ -81,12 +83,6 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         jcbLibro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jcbLibroMouseClicked(evt);
-            }
-        });
-
-        jcbEstado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jcbEstadoMouseClicked(evt);
             }
         });
 
@@ -117,29 +113,37 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtEj);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Cantidad");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jcbLibro, 0, 300, Short.MAX_VALUE)
-                    .addComponent(jcbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbAgregar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbLimpiar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(46, 46, 46))
+                    .addComponent(jtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jcbLibro, 0, 398, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbAgregar))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jcbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbLimpiar))))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,14 +155,18 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jcbLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAgregar))
-                .addGap(54, 54, 54)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbLimpiar))
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,28 +174,34 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
-        
+
         try {
-            
-            if (jcbLibro.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+
+            /*if (jcbLibro.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
                 JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
                 return;
-            }
+            }*/
 
             borrarFilas();
+
+            int cantidad = Integer.valueOf(jtCantidad.getText());
 
             Libro ejLibro = (Libro) jcbLibro.getModel().getSelectedItem();
 
             EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem();
 
-            Ejemplar ejNvo = new Ejemplar();
+            for (int i = 1; i <= cantidad; i++) {
+                Ejemplar ejNvo = new Ejemplar();
 
-            ejNvo.setLibro(ejLibro);
-            ejNvo.setEstado(estadoEj);
+                ejNvo.setLibro(ejLibro);
+                ejNvo.setEstado(estadoEj);
 
-            ejData.agregarEjemplar(ejNvo);
+                ejData.agregarEjemplar(ejNvo);
 
-            listaEjemplares.add(ejNvo);
+                listaEjemplares.add(ejNvo);
+            }
+            
+            JOptionPane.showMessageDialog(null, "Ejemplares añadidos correctamente.");
 
             for (Ejemplar lEj : listaEjemplares) {
                 jtEjemplarModelo.addRow(new Object[]{
@@ -199,8 +213,10 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
             }//finForEach
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Se produjo un error al agregar el ejemplar. " + e.getMessage());
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Seleccione los items.");
+        } catch (NumberFormatException a) {
+            JOptionPane.showMessageDialog(this,"El cuadro cantidad debe ser un numero.");
         }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
@@ -208,11 +224,6 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         cargarComboBoxLibro();
     }//GEN-LAST:event_jcbLibroMouseClicked
-
-    private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
-        // TODO add your handling code here:
-        cargarComboBoxEstado();
-    }//GEN-LAST:event_jcbEstadoMouseClicked
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         // TODO add your handling code here:
@@ -226,14 +237,16 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JComboBox<EstadoEjemplar> jcbEstado;
     private javax.swing.JComboBox<Libro> jcbLibro;
+    private javax.swing.JTextField jtCantidad;
     private javax.swing.JTable jtEj;
     // End of variables declaration//GEN-END:variables
-    
+
     private void armarCabecera() {
         jtEjemplarModelo.addColumn("Código");
         jtEjemplarModelo.addColumn("ISBN");
@@ -243,12 +256,12 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
         jtEj.setModel(jtEjemplarModelo);
     }
-    
+
     private void cargarComboBoxEstadoVacio() {
         jcbEstado.setModel(new DefaultComboBoxModel<>());
     }
-    
-    private void cargarComboBoxEstado(){
+
+    private void cargarComboBoxEstado() {
         jcbEstado.setModel(new DefaultComboBoxModel<>(EstadoEjemplar.values()));
     }
 
@@ -256,13 +269,13 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         jcbLibro.setModel(new DefaultComboBoxModel<>());
     }
 
-    private void cargarComboBoxLibro(){
+    private void cargarComboBoxLibro() {
         jcbLibro.removeAllItems();
-        
-        listaLibros=libroData.listarLibros();
-        
+
+        listaLibros = libroData.listarLibros();
+
         for (int i = 0; i < listaLibros.size(); i++) {
-            
+
             jcbLibro.addItem(listaLibros.get(i));
         }
     }
