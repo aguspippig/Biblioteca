@@ -183,18 +183,23 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
 
         try {
 
-            /*if (jcbLibro.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+            if (jcbLibro.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
                 JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
                 return;
-            }*/
+            }
+            
+            if(jtCantidad.getText().equals("0")){
+                JOptionPane.showMessageDialog(this, "La cantidad debe ser mayora 0.");
+                return;
+            }
 
             borrarFilas();
-
-            int cantidad = Integer.valueOf(jtCantidad.getText());
 
             Libro ejLibro = (Libro) jcbLibro.getModel().getSelectedItem();
 
             EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem();
+            
+            int cantidad = Integer.valueOf(jtCantidad.getText());
 
             for (int i = 1; i <= cantidad; i++) {
                 Ejemplar ejNvo = new Ejemplar();
@@ -236,6 +241,7 @@ public class AgregarEjemplar extends javax.swing.JInternalFrame {
         borrarFilas();
         cargarComboBoxLibroVacio();
         cargarComboBoxEstadoVacio();
+        jtCantidad.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
