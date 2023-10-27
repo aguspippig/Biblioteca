@@ -112,7 +112,7 @@ public class PrestamosAtrasados extends javax.swing.JInternalFrame {
         modelo.addColumn("Nro de Socio");
         modelo.addColumn("Apellido y Nombre");
         modelo.addColumn("Codigo");
-        modelo.addColumn("Ejemplar");
+        modelo.addColumn("ID Ejemplar");
         modelo.addColumn("Fecha de prestamo");
         modelo.addColumn("Fecha de devolucion");
         //modelo.addColumn("Estado");
