@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/accesoADatos/LectorData.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/ModificarLibro.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/accesoADatos/EjemplarData.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/GestionLectores.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/BuscarLector.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/DevolverLibro.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/ListadoLector.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/entidades/EstadoEjemplar.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/vistas/BuscarEjemplar.java</file>
+            <file>file:/C:/Users/marti/Documents/GitHub/Biblioteca/src/biblioteca/accesoADatos/PrestamoData.java</file>
+        </group>
     </open-files>
 </project-private>
