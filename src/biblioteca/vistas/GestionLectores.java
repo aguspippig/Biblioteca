@@ -182,10 +182,10 @@ private final Connection con;
             }else
              lectorData.agregarLector(lector);
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios" + ex);
+            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios" );
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un numero en los campos numericos" + ex);
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero en los campos numericos" );
         }
 
         // TODO add your handling code here:
