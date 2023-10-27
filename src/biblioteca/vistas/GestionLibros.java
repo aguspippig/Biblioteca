@@ -46,8 +46,8 @@ public class GestionLibros extends javax.swing.JInternalFrame {
         jtTipo = new javax.swing.JTextField();
         jtEditorial = new javax.swing.JTextField();
         jbAniadir = new javax.swing.JButton();
-        jbSalir = new javax.swing.JButton();
 
+        setClosable(true);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(516, 450));
 
@@ -80,13 +80,6 @@ public class GestionLibros extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setText("SALIR");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,17 +96,17 @@ public class GestionLibros extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbAniadir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(jbSalir))
                     .addComponent(jtISBN)
                     .addComponent(jtTitulo)
                     .addComponent(jtAutor)
                     .addComponent(jtTipo)
                     .addComponent(jtEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addComponent(jtAnio))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(204, Short.MAX_VALUE)
+                .addComponent(jbAniadir)
+                .addGap(204, 204, 204))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,11 +137,9 @@ public class GestionLibros extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAniadir)
-                    .addComponent(jbSalir))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jbAniadir)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,11 +182,6 @@ public class GestionLibros extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbAniadirActionPerformed
 
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jbSalirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -206,7 +192,6 @@ public class GestionLibros extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JButton jbAniadir;
-    private javax.swing.JButton jbSalir;
     private javax.swing.JTextField jtAnio;
     private javax.swing.JTextField jtAutor;
     private javax.swing.JTextField jtEditorial;

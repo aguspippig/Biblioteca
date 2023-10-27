@@ -50,13 +50,13 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jtTipo = new javax.swing.JTextField();
         jtEditorial = new javax.swing.JTextField();
         jbModificar = new javax.swing.JButton();
-        jbSalir = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jrEstado = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jtISBN = new javax.swing.JTextField();
         jrISBN = new javax.swing.JRadioButton();
 
+        setClosable(true);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(533, 430));
 
@@ -117,13 +117,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
             }
         });
 
-        jbSalir.setText("SALIR");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Estado");
 
@@ -158,12 +151,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbModificar)
-                                .addGap(118, 118, 118)
-                                .addComponent(jbSalir))
-                            .addComponent(jrEstado, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(jrEstado))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jrISBN)
@@ -176,14 +164,17 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                             .addComponent(jtTipo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtEditorial, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(206, Short.MAX_VALUE)
+                .addComponent(jbModificar)
+                .addGap(206, 206, 206))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -220,11 +211,9 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jrEstado))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbModificar)
-                    .addComponent(jbSalir))
-                .addGap(11, 11, 11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jbModificar)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -241,10 +230,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jtTipo.setText(libro.getTipo());
         jtTitulo.setText(libro.getTitulo());
     }//GEN-LAST:event_jcISBNActionPerformed
-
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-       this.dispose();
-    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         try {
@@ -314,7 +299,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jbModificar;
-    private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Integer> jcISBN;
     private javax.swing.JRadioButton jrEstado;
     private javax.swing.JRadioButton jrISBN;
