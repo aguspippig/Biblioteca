@@ -37,7 +37,6 @@ public class EjemplarData {
 
             if (rs.next()) {
                 ejemplar.setCodigo(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Ejemplar añadido correctamente.");
             } else {
                 JOptionPane.showMessageDialog(null, "Error!");
             }
