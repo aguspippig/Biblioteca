@@ -233,6 +233,8 @@ public class BuscarLector extends javax.swing.JInternalFrame {
             jtTelefono.setText(lector.getTelefono() + "");
             jtMail.setText(lector.getMail());
             jrEstado.setSelected(lector.isEstado());
+             jtId.setEditable(false);
+           
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Verifique los campos ingresados." );
@@ -252,6 +254,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
             jtTelefono.setText(lector.getTelefono() + "");
             jtMail.setText(lector.getMail());
             jrEstado.setSelected(lector.isEstado());
+            jtId.setEditable(false);
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Verifique los campos ingresados." );
         }
@@ -267,14 +270,15 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         jtDomicilio.setText("");
         jtMail.setText("");
         jrEstado.setSelected(false);
+         jtId.setEditable(true);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
 
         try {
             int id = Integer.valueOf(jtId.getText());
-            int dni = Integer.valueOf(jtDni.getText());
-            int telefono = Integer.valueOf(jtTelefono.getText());
+            int dni = Integer.parseInt(jtDni.getText());
+            int telefono = Integer.parseInt(jtTelefono.getText());
             String apellido = jtApellido.getText();
             String nombre = jtNombre.getText();
             String domicilio = jtDomicilio.getText();
@@ -296,7 +300,7 @@ public class BuscarLector extends javax.swing.JInternalFrame {
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         try {
             int id = Integer.valueOf(jtId.getText());
-            int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar Lector: " + jtId.getText() + " , " + jtApellido.getText()+ "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar Lector: " + jtId.getText() + " , " + jtApellido.getText()+ "?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
             if (respuesta == JOptionPane.YES_OPTION) {
                 lectorData.eliminarLector(id);
@@ -315,10 +319,6 @@ public class BuscarLector extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Verifique los campos ingresados.");
 
-            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados," );
-
-
-            JOptionPane.showMessageDialog(null, "Verifique los campos ingresados.");
 
         }
     }
