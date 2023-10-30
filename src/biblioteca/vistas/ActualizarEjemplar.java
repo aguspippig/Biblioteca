@@ -18,9 +18,11 @@ import javax.swing.JOptionPane;
  * @author agus_
  */
 public class ActualizarEjemplar extends javax.swing.JInternalFrame {
-    private EjemplarData ejData= new EjemplarData();
-    private PrestamoData prData=new PrestamoData();
+
+    private EjemplarData ejData = new EjemplarData();
+    private PrestamoData prData = new PrestamoData();
     private ArrayList<Ejemplar> listaEjemplares = new ArrayList<>();
+
     /**
      * Creates new form ActualizarEjemplar
      */
@@ -28,10 +30,10 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         initComponents();
         //cargarComboBoxEstado();
         //cargarComboBoxEjemplares();
-        
+
         cargarComboBoxEjemplarVacio();
         cargarComboBoxEstadoVacio();
-       
+
     }
 
     /**
@@ -54,7 +56,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(700, 300));
+        setPreferredSize(new java.awt.Dimension(750, 300));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -104,24 +106,25 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbActualiz, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jbRetrasos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbLimpiar))
-                    .addComponent(jcbEjemplar, javax.swing.GroupLayout.Alignment.TRAILING, 0, 350, Short.MAX_VALUE)
-                    .addComponent(jcbEstado, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(111, 111, 111))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbActualiz))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbRetrasos)
+                        .addGap(182, 182, 182)
+                        .addComponent(jbLimpiar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jcbEjemplar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,10 +141,10 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbActualiz)
                     .addComponent(jbLimpiar)
-                    .addComponent(jbRetrasos))
-                .addContainerGap(72, Short.MAX_VALUE))
+                    .addComponent(jbRetrasos)
+                    .addComponent(jbActualiz))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,22 +153,28 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private void jcbEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbEstadoMouseClicked
         // TODO add your handling code here:
         cargarComboBoxEstado();
-        
+
     }//GEN-LAST:event_jcbEstadoMouseClicked
 
     private void jbActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizActionPerformed
         // TODO add your handling code here:
 
         try {
+
+            if (jcbEjemplar.getModel().getSelectedItem() == null || jcbEstado.getModel().getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un item.");
+                return;
+            }
+
             Ejemplar ejCod = (Ejemplar) jcbEjemplar.getModel().getSelectedItem(); //ejemplar del q se extrae el estado actual
 
             int codigo = ejCod.getCodigo();
 
             EstadoEjemplar estadoEj = (EstadoEjemplar) jcbEstado.getModel().getSelectedItem(); //estado al q se kiere actualizar
-            
+
             if (ejCod.getEstado() == EstadoEjemplar.PRESTADO || ejCod.getEstado() == EstadoEjemplar.RETRASO) {
                 JOptionPane.showMessageDialog(null, "No se puede actualizar, ejemplar no devuelto.");
-                
+
             } else {
                 if ((ejCod.getEstado() == EstadoEjemplar.DISPONIBLE)
                         && (estadoEj == EstadoEjemplar.REPARACION || estadoEj == EstadoEjemplar.NO_DISPONIBLE)) {
@@ -181,7 +190,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
                 }
             }
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Seleccione un item. " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Seleccione un item.");
         }
 
     }//GEN-LAST:event_jbActualizActionPerformed
@@ -198,7 +207,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbEjemplarMouseClicked
 
     private void jbRetrasosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRetrasosActionPerformed
-        
+
         PrestamosAtrasados pa = new PrestamosAtrasados();
         pa.setVisible(true);
         Escritorio.add(pa);
@@ -219,8 +228,8 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
     private void cargarComboBoxEstadoVacio() {
         jcbEstado.setModel(new DefaultComboBoxModel<>());
     }
-    
-    private void cargarComboBoxEstado(){
+
+    private void cargarComboBoxEstado() {
         jcbEstado.setModel(new DefaultComboBoxModel<>(EstadoEjemplar.values()));
     }
 
@@ -238,7 +247,7 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
             jcbEjemplar.addItem(listaEjemplares.get(i));
         }
     }
-    
+
     private void actualizarEstadoEjemplar(int codigo, EstadoEjemplar estado) {
         Ejemplar ejActualiz = new Ejemplar();
         ejActualiz.setCodigo(codigo);
@@ -253,4 +262,3 @@ public class ActualizarEjemplar extends javax.swing.JInternalFrame {
         }
     }
 }
-
