@@ -57,7 +57,7 @@ public class LectorData {
         ArrayList<Lector> lista = new ArrayList<>();
 
         try {
-            String sql = "SELECT nroSocio, apellido, nombre, domicilio, dni, telefono, mail, lector.estado FROM lector JOIN prestamo ON (lector.nroSocio = lector) WHERE TIMESTAMPDIFF (day,fechaPrestamo,fechaDevoluc) > 8";
+            String sql = "SELECT nroSocio, apellido, nombre, domicilio, dni, telefono, mail, lector.estado FROM lector JOIN prestamo ON (lector.nroSocio = lector) WHERE TIMESTAMPDIFF (day,fechaDevoluc,CURRENT_DATE) > 0 AND prestamo.estado = 1";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
