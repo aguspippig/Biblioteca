@@ -217,6 +217,8 @@ public class PrestamoData {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla libro." + ex.getMessage());
+        }catch (NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Error" + e.getMessage());
         }
 
         return lista;

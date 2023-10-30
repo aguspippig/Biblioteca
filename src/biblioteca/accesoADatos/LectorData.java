@@ -171,7 +171,7 @@ public class LectorData {
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el lector");
+                JOptionPane.showMessageDialog(null, "No existe el lector ");
                 verificar = true;
             }
             if (lector.isEstado() == false && verificar == false) {
@@ -245,7 +245,7 @@ public class LectorData {
             if (registro == 1) {
                 JOptionPane.showMessageDialog(null, "Lector modificado correctamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "El Lector no existe.");
+                JOptionPane.showMessageDialog(null, "El Lector no existe.p ");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos. ");
@@ -267,7 +267,7 @@ public class LectorData {
 
             int registro = ps.executeUpdate();
             if (registro == 1) {
-                JOptionPane.showMessageDialog(null, "Lector Eliminado");
+                JOptionPane.showMessageDialog(null, "Lector eliminado");
             } else {
                 JOptionPane.showMessageDialog(null, "Lector no encontrado");
             }
