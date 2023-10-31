@@ -284,7 +284,9 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
             jtISBN.setEnabled(false);
         } else {
             jtISBN.setEnabled(true);
+            JOptionPane.showMessageDialog(null,"Recuerde que no puede modificar el 'ISBN' de libros con ejemplares existentes.");
         }
+        
     }//GEN-LAST:event_jrISBNActionPerformed
 
 
